@@ -7,18 +7,18 @@
 
   <style>
     :root{
-      /* Semi‑dark gray coffee theme */
-      --bg: #111827;
-      --bg-elevated: #1f2933;
-      --bg-elevated-2: #273549;
-      --border-subtle: #374151;
-      --text-main: #f9fafb;
-      --text-sub: #9ca3af;
-      --accent: #f59e0b;
-      --accent-soft: rgba(245,158,11,0.16);
-      --danger: #f97373;
-      --success: #4ade80;
-      --shadow-soft: 0 18px 45px rgba(0,0,0,0.55);
+      /* Light warm coffee theme */
+      --bg: #fef7ee;
+      --bg-elevated: #fdf4eb;
+      --bg-elevated-2: #fcefe2;
+      --border-subtle: #e5d9cc;
+      --text-main: #2d1b0f;
+      --text-sub: #6b4e31;
+      --accent: #d97706;
+      --accent-soft: rgba(217,119,6,0.16);
+      --danger: #dc2626;
+      --success: #16a34a;
+      --shadow-soft: 0 18px 45px rgba(0,0,0,0.12);
     }
 
     *{box-sizing:border-box;}
@@ -26,7 +26,7 @@
       margin:0;
       font-family:"Cairo",system-ui,Arial;
       background:
-        radial-gradient(circle at 0% 0%,#1f2937 0,#111827 55%,#020617 100%);
+        radial-gradient(circle at 0% 0%,#fdf4eb 0,#fef7ee 55%,#faf5ef 100%);
       color:var(--text-main);
       -webkit-font-smoothing:antialiased;
     }
@@ -34,15 +34,15 @@
     header{
       padding:.9rem 1rem;
       background:
-        radial-gradient(circle at top,#1f2937 0,#020617 70%);
+        radial-gradient(circle at top,#fdf4eb 0,#faf5ef 70%);
       color:var(--text-main);
       text-align:center;
       position:sticky;
       top:0;
       z-index:10;
       backdrop-filter:blur(18px);
-      border-bottom:1px solid rgba(148,163,184,0.25);
-      box-shadow:0 18px 40px rgba(0,0,0,0.65);
+      border-bottom:1px solid rgba(229,217,204,0.25);
+      box-shadow:0 18px 40px rgba(0,0,0,0.15);
     }
     header .logo{
       display:flex;
@@ -55,11 +55,11 @@
       height:46px;
       border-radius:18px;
       background:
-        #020617
+        #faf5ef
         url("img/logo-coffee.png") center center/cover no-repeat;
       box-shadow:
-        0 0 0 1px rgba(248,250,252,0.35),
-        0 12px 30px rgba(0,0,0,0.9);
+        0 0 0 1px rgba(217,119,6,0.35),
+        0 12px 30px rgba(0,0,0,0.2);
     }
     header .logo-text-main{
       font-weight:800;
@@ -78,7 +78,7 @@
     }
 
     .card{
-      background:radial-gradient(circle at top,#111827,#020617);
+      background:radial-gradient(circle at top,#fef7ee,#faf5ef);
       border-radius:20px;
       padding:1rem 1.1rem;
       box-shadow:var(--shadow-soft);
@@ -92,7 +92,7 @@
       position:absolute;
       inset:-40%;
       background:
-        radial-gradient(circle at 0% 0%,rgba(245,158,11,0.16),transparent 55%),
+        radial-gradient(circle at 0% 0%,rgba(217,119,6,0.16),transparent 55%),
         radial-gradient(circle at 100% 0%,rgba(59,130,246,0.15),transparent 60%);
       opacity:.95;
       pointer-events:none;
@@ -115,7 +115,7 @@
       font-family:inherit;
       font-size:.9rem;
       outline:none;
-      background:#020617;
+      background:#faf5ef;
       color:var(--text-main);
       transition:border-color .18s,box-shadow .18s,background .18s,transform .08s;
     }
@@ -126,13 +126,13 @@
     }
     input:focus,select:focus,textarea:focus{
       border-color:var(--accent);
-      box-shadow:0 0 0 1px rgba(245,158,11,0.6);
-      background:#020617;
+      box-shadow:0 0 0 1px rgba(217,119,6,0.6);
+      background:#faf5ef;
     }
 
     button{
-      background:linear-gradient(140deg,#f59e0b,#f97316);
-      color:#020617;
+      background:linear-gradient(140deg,#d97706,#ea580c);
+      color:#faf5ef;
       border:none;
       cursor:pointer;
       font-weight:800;
@@ -161,16 +161,16 @@
     button:disabled{
       opacity:.55;
       cursor:default;
-      background:linear-gradient(140deg,#4b5563,#374151);
+      background:linear-gradient(140deg,#d1d5db,#9ca3af);
       color:var(--text-sub);
     }
     button.primary{
-      box-shadow:0 12px 26px rgba(245,158,11,0.5);
+      box-shadow:0 12px 26px rgba(217,119,6,0.5);
     }
     .btn-ghost{
       background:transparent;
       color:var(--accent);
-      border:1px solid rgba(148,163,184,0.4);
+      border:1px solid rgba(229,217,204,0.4);
     }
 
     .error{color:var(--danger);font-size:.8rem;margin-top:.25rem;}
@@ -186,11 +186,11 @@
       align-items:center;
       gap:.4rem;
       padding:.45rem .85rem;
-      background:rgba(15,23,42,0.9);
+      background:rgba(250,245,239,0.9);
       border-radius:14px;
       font-size:.8rem;
       border:1px solid var(--border-subtle);
-      box-shadow:0 8px 20px rgba(0,0,0,0.65);
+      box-shadow:0 8px 20px rgba(0,0,0,0.15);
     }
     .store-chip span.distance{
       color:var(--accent);font-weight:700;
@@ -198,13 +198,13 @@
     .pulse-dot{
       width:9px;height:9px;border-radius:50%;
       background:var(--accent);
-      box-shadow:0 0 0 0 rgba(245,158,11,0.65);
+      box-shadow:0 0 0 0 rgba(217,119,6,0.65);
       animation:pulse 1.7s infinite;
     }
     @keyframes pulse{
-      0%{box-shadow:0 0 0 0 rgba(245,158,11,0.65);}
-      70%{box-shadow:0 0 0 10px rgba(245,158,11,0);}
-      100%{box-shadow:0 0 0 0 rgba(245,158,11,0);}
+      0%{box-shadow:0 0 0 0 rgba(217,119,6,0.65);}
+      70%{box-shadow:0 0 0 10px rgba(217,119,6,0);}
+      100%{box-shadow:0 0 0 0 rgba(217,119,6,0);}
     }
 
     .section-title{
@@ -223,19 +223,19 @@
       gap:.55rem;
     }
     .store-card{
-      background:linear-gradient(135deg,#020617,#111827);
+      background:linear-gradient(135deg,#faf5ef,#fef7ee);
       border-radius:16px;
       padding:.6rem .75rem .65rem;
-      border:1px solid rgba(75,85,99,0.9);
+      border:1px solid rgba(229,217,204,0.9);
       position:relative;
       overflow:hidden;
       transition:border-color .18s,box-shadow .18s,transform .12s,background .18s;
     }
     .store-card.active{
       border-color:var(--accent);
-      box-shadow:0 16px 40px rgba(0,0,0,0.95);
+      box-shadow:0 16px 40px rgba(0,0,0,0.25);
       transform:translateY(-1px);
-      background:radial-gradient(circle at top,#1f2937,#020617);
+      background:radial-gradient(circle at top,#fdf4eb,#faf5ef);
     }
     .store-name{
       font-weight:700;
@@ -266,21 +266,21 @@
       margin-top:.55rem;
     }
     .drink-card{
-      background:linear-gradient(145deg,#020617,#111827);
+      background:linear-gradient(145deg,#faf5ef,#fef7ee);
       border-radius:16px;
       padding:.55rem .55rem .6rem;
       text-align:center;
       cursor:pointer;
-      border:1px solid rgba(55,65,81,0.9);
+      border:1px solid rgba(229,217,204,0.9);
       position:relative;
       overflow:hidden;
       transition:border-color .18s,box-shadow .18s,transform .1s,background .18s;
     }
     .drink-card.active{
       border-color:var(--accent);
-      box-shadow:0 12px 30px rgba(0,0,0,0.95);
+      box-shadow:0 12px 30px rgba(0,0,0,0.25);
       transform:translateY(-1px);
-      background:radial-gradient(circle at top,#1f2937,#020617);
+      background:radial-gradient(circle at top,#fdf4eb,#faf5ef);
     }
     .drink-name{font-weight:700;font-size:.9rem;}
     .drink-price{font-size:.85rem;color:var(--accent);margin-top:.25rem;}
@@ -315,10 +315,10 @@
       padding:.18rem .6rem;
       border-radius:999px;
       font-size:.72rem;
-      background:rgba(15,23,42,0.9);
+      background:rgba(250,245,239,0.9);
       color:var(--accent);
       font-weight:600;
-      border:1px solid rgba(55,65,81,0.9);
+      border:1px solid rgba(229,217,204,0.9);
     }
     .cart-items{
       margin-top:.4rem;
@@ -331,14 +331,14 @@
     /* التايملاين */
     .status-dot{
       width:11px;height:11px;border-radius:50%;
-      background:#4b5563;
+      background:#d1d5db;
       display:inline-block;margin-left:.3rem;
-      box-shadow:0 0 0 0 rgba(74,222,128,0);
+      box-shadow:0 0 0 0 rgba(22,163,74,0);
       transition:background .18s,box-shadow .25s;
     }
     .status-dot.active{
       background:var(--success);
-      box-shadow:0 0 0 4px rgba(74,222,128,0.25);
+      box-shadow:0 0 0 4px rgba(22,163,74,0.25);
     }
     .timeline{
       display:flex;
@@ -360,7 +360,7 @@
     .modal-backdrop{
       position:fixed;
       inset:0;
-      background:rgba(15,23,42,0.85);
+      background:rgba(250,245,239,0.85);
       display:none;
       align-items:flex-end;
       justify-content:center;
@@ -369,11 +369,11 @@
     .modal{
       width:100%;
       max-width:500px;
-      background:#020617;
+      background:#faf5ef;
       border-radius:20px 20px 0 0;
       padding:1rem 1rem 1.1rem;
-      border-top:1px solid #374151;
-      box-shadow:0 -10px 30px rgba(0,0,0,0.7);
+      border-top:1px solid #e5d9cc;
+      box-shadow:0 -10px 30px rgba(0,0,0,0.2);
     }
     .modal-header{
       display:flex;
@@ -683,7 +683,7 @@
     const phone = custPhone.value.trim();
     const car = custCar.value.trim();
     if(!name || !phone){
-      profileMsg.style.color = '#f97373';
+      profileMsg.style.color = '#dc2626';
       profileMsg.textContent = 'الاسم ورقم الجوال مطلوبان.';
       return;
     }
@@ -691,10 +691,10 @@
       await db.collection('users').doc(currentUser.uid).update({
         name, phone, carNumber:car
       });
-      profileMsg.style.color = '#4ade80';
+      profileMsg.style.color = '#16a34a';
       profileMsg.textContent = 'تم حفظ البيانات.';
     }catch(e){
-      profileMsg.style.color = '#f97373';
+      profileMsg.style.color = '#dc2626';
       profileMsg.textContent = 'خطأ في حفظ البيانات.';
     }
   };
@@ -857,7 +857,7 @@
   // مودال: اختيار السكر + ملاحظة للمشروب
   function openDrinkModal(drink){
     if(!selectedStore){
-      orderMsg.style.color='#f97373';
+      orderMsg.style.color='#dc2626';
       orderMsg.textContent='اختر محل أولاً.';
       return;
     }
@@ -930,14 +930,14 @@
   btnPlaceOrder.onclick = async ()=>{
     orderMsg.textContent = '';
     if(!selectedStore || cartItems.length === 0){
-      orderMsg.style.color='#f97373';
+      orderMsg.style.color='#dc2626';
       orderMsg.textContent='اختر محل وأضف مشروب واحد على الأقل.';
       return;
     }
     const car = custCar.value.trim();
     const name = custName.value.trim();
     if(!name){
-      orderMsg.style.color='#f97373';
+      orderMsg.style.color='#dc2626';
       orderMsg.textContent='اكتب اسمك واحفظ البيانات أولاً.';
       return;
     }
@@ -990,13 +990,13 @@
     };
     try{
       await db.collection('orders').add(orderData);
-      orderMsg.style.color='#4ade80';
+      orderMsg.style.color='#16a34a';
       orderMsg.textContent='تم إرسال طلبك بنجاح، تابع الحالة بالأسفل.';
       btnPlaceOrder.disabled = true;
       cartItems = [];
       updateCartUI();
     }catch(e){
-      orderMsg.style.color='#f97373';
+      orderMsg.style.color='#dc2626';
       orderMsg.textContent='حدث خطأ في إرسال الطلب.';
     }
   };
@@ -1046,4 +1046,4 @@
   }
 </script>
 </body>
-</html>
+    </html>
