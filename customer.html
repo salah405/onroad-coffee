@@ -7,18 +7,18 @@
 
   <style>
     :root{
-      /* Morning Coffee Theme - فاتح ومنعش */
-      --bg: #f7eee2;               /* كريمي فاتح يشبه رغوة اللاتيه */ 
-      --bg-elevated: #ffffff;      /* كروت بيضاء نضيفة */
-      --bg-elevated-2: #f3e2c8;    /* كروت ثانوية بلون قهوة خفيف */
-      --border-subtle: #e0d1bc;    /* حدود ناعمة دافئة */
-      --text-main: #3b2b24;        /* بني غامق مريح للقراءة */
-      --text-sub: #8b6f55;         /* بني أفتح للنصوص الثانوية */
-      --accent: #e69b34;           /* برتقالي دهبي دافي (لون شمس/إسبريسو) */
-      --accent-soft: rgba(230,155,52,0.16);
-      --danger: #e8504f;
-      --success: #2e7d32;
-      --shadow-soft: 0 14px 40px rgba(155,118,80,0.25); /* ظل دافي */
+      /* Semi‑dark gray coffee theme */
+      --bg: #111827;
+      --bg-elevated: #1f2933;
+      --bg-elevated-2: #273549;
+      --border-subtle: #374151;
+      --text-main: #f9fafb;
+      --text-sub: #9ca3af;
+      --accent: #f59e0b;
+      --accent-soft: rgba(245,158,11,0.16);
+      --danger: #f97373;
+      --success: #4ade80;
+      --shadow-soft: 0 18px 45px rgba(0,0,0,0.55);
     }
 
     *{box-sizing:border-box;}
@@ -26,7 +26,7 @@
       margin:0;
       font-family:"Cairo",system-ui,Arial;
       background:
-        radial-gradient(circle at top,#ffe9c3 0,#f7eee2 45%,#f3e2c8 100%);
+        radial-gradient(circle at 0% 0%,#1f2937 0,#111827 55%,#020617 100%);
       color:var(--text-main);
       -webkit-font-smoothing:antialiased;
     }
@@ -34,15 +34,15 @@
     header{
       padding:.9rem 1rem;
       background:
-        linear-gradient(135deg,#fffbf5,#ffe0b3);
-      color:#3b2b24;
+        radial-gradient(circle at top,#1f2937 0,#020617 70%);
+      color:var(--text-main);
       text-align:center;
       position:sticky;
       top:0;
       z-index:10;
-      backdrop-filter:blur(16px);
-      border-bottom:1px solid rgba(179,130,65,0.25);
-      box-shadow:0 8px 26px rgba(191,140,76,0.35);
+      backdrop-filter:blur(18px);
+      border-bottom:1px solid rgba(148,163,184,0.25);
+      box-shadow:0 18px 40px rgba(0,0,0,0.65);
     }
     header .logo{
       display:flex;
@@ -50,11 +50,1003 @@
       align-items:center;
       gap:.75rem;
     }
-
-    /* استبدال الأيقونة باللوجو المرفق */
     header .logo-icon{
       width:46px;
       height:46px;
+      border-radius:18px;
+      background:
+        #020617
+        url("img/logo-coffee.png") center center/cover no-repeat;
+      box-shadow:
+        0 0 0 1px rgba(248,250,252,0.35),
+        0 12px 30px rgba(0,0,0,0.9);
+    }
+    header .logo-text-main{
+      font-weight:800;
+      letter-spacing:.04em;
+      font-size:1.08rem;
+    }
+    header .logo-text-sub{
+      font-size:.8rem;
+      color:var(--text-sub);
+    }
+
+    main{
+      max-width:500px;
+      margin:0 auto;
+      padding:1rem .9rem 1.1rem;
+    }
+
+    .card{
+      background:radial-gradient(circle at top,#111827,#020617);
+      border-radius:20px;
+      padding:1rem 1.1rem;
+      box-shadow:var(--shadow-soft);
+      margin-bottom:1rem;
+      border:1px solid var(--border-subtle);
+      position:relative;
+      overflow:hidden;
+    }
+    .card::before{
+      content:"";
+      position:absolute;
+      inset:-40%;
+      background:
+        radial-gradient(circle at 0% 0%,rgba(245,158,11,0.16),transparent 55%),
+        radial-gradient(circle at 100% 0%,rgba(59,130,246,0.15),transparent 60%);
+      opacity:.95;
+      pointer-events:none;
+      mix-blend-mode:screen;
+    }
+    .card > *{position:relative;}
+
+    h2,h3,h4{margin:.2rem 0 .5rem;}
+    h2{font-size:1.2rem;}
+    h3{font-size:1.05rem;}
+    h4{font-size:.98rem;}
+    label{display:block;margin-top:.4rem;font-size:.9rem;color:var(--text-sub);}
+
+    input,button,select,textarea{
+      width:100%;
+      padding:.75rem .85rem;
+      margin-top:.3rem;
+      border-radius:999px;
+      border:1px solid var(--border-subtle);
+      font-family:inherit;
+      font-size:.9rem;
+      outline:none;
+      background:#020617;
+      color:var(--text-main);
+      transition:border-color .18s,box-shadow .18s,background .18s,transform .08s;
+    }
+    textarea{
+      border-radius:14px;
+      min-height:72px;
+      resize:vertical;
+    }
+    input:focus,select:focus,textarea:focus{
+      border-color:var(--accent);
+      box-shadow:0 0 0 1px rgba(245,158,11,0.6);
+      background:#020617;
+    }
+
+    button{
+      background:linear-gradient(140deg,#f59e0b,#f97316);
+      color:#020617;
+      border:none;
+      cursor:pointer;
+      font-weight:800;
+      letter-spacing:.03em;
+      position:relative;
+      overflow:hidden;
+    }
+    button::after{
+      content:"";
+      position:absolute;
+      top:0;left:-40%;
+      width:40%;
+      height:100%;
+      background:linear-gradient(115deg,rgba(255,255,255,0.7),transparent 65%);
+      transform:skewX(-20deg) translateX(-120%);
+      transition:transform .4s;
+      pointer-events:none;
+    }
+    button:hover::after{
+      transform:skewX(-20deg) translateX(260%);
+    }
+    button:active{
+      transform:scale(.97);
+      box-shadow:none;
+    }
+    button:disabled{
+      opacity:.55;
+      cursor:default;
+      background:linear-gradient(140deg,#4b5563,#374151);
+      color:var(--text-sub);
+    }
+    button.primary{
+      box-shadow:0 12px 26px rgba(245,158,11,0.5);
+    }
+    .btn-ghost{
+      background:transparent;
+      color:var(--accent);
+      border:1px solid rgba(148,163,184,0.4);
+    }
+
+    .error{color:var(--danger);font-size:.8rem;margin-top:.25rem;}
+    .success{color:var(--success);font-size:.8rem;margin-top:.25rem;}
+
+    .small{
+      font-size:.8rem;color:var(--text-sub);
+    }
+
+    .store-chip{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:.4rem;
+      padding:.45rem .85rem;
+      background:rgba(15,23,42,0.9);
+      border-radius:14px;
+      font-size:.8rem;
+      border:1px solid var(--border-subtle);
+      box-shadow:0 8px 20px rgba(0,0,0,0.65);
+    }
+    .store-chip span.distance{
+      color:var(--accent);font-weight:700;
+    }
+    .pulse-dot{
+      width:9px;height:9px;border-radius:50%;
+      background:var(--accent);
+      box-shadow:0 0 0 0 rgba(245,158,11,0.65);
+      animation:pulse 1.7s infinite;
+    }
+    @keyframes pulse{
+      0%{box-shadow:0 0 0 0 rgba(245,158,11,0.65);}
+      70%{box-shadow:0 0 0 10px rgba(245,158,11,0);}
+      100%{box-shadow:0 0 0 0 rgba(245,158,11,0);}
+    }
+
+    .section-title{
+      font-size:.8rem;
+      text-transform:uppercase;
+      letter-spacing:.14em;
+      color:var(--text-sub);
+      margin-bottom:.25rem;
+    }
+
+    /* قائمة المحلات */
+    .stores-list-vertical{
+      margin-top:.7rem;
+      display:flex;
+      flex-direction:column;
+      gap:.55rem;
+    }
+    .store-card{
+      background:linear-gradient(135deg,#020617,#111827);
+      border-radius:16px;
+      padding:.6rem .75rem .65rem;
+      border:1px solid rgba(75,85,99,0.9);
+      position:relative;
+      overflow:hidden;
+      transition:border-color .18s,box-shadow .18s,transform .12s,background .18s;
+    }
+    .store-card.active{
+      border-color:var(--accent);
+      box-shadow:0 16px 40px rgba(0,0,0,0.95);
+      transform:translateY(-1px);
+      background:radial-gradient(circle at top,#1f2937,#020617);
+    }
+    .store-name{
+      font-weight:700;
+      margin-bottom:.15rem;
+    }
+    .store-meta{
+      font-size:.78rem;
+      color:var(--text-sub);
+      line-height:1.4;
+    }
+    .store-actions{
+      margin-top:.4rem;
+      display:flex;
+      gap:.35rem;
+    }
+    .btn-xs{
+      padding:.35rem .6rem;
+      font-size:.75rem;
+      border-radius:999px;
+      width:auto;
+    }
+
+    /* المشروبات */
+    .drink-list{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:.65rem;
+      margin-top:.55rem;
+    }
+    .drink-card{
+      background:linear-gradient(145deg,#020617,#111827);
+      border-radius:16px;
+      padding:.55rem .55rem .6rem;
+      text-align:center;
+      cursor:pointer;
+      border:1px solid rgba(55,65,81,0.9);
+      position:relative;
+      overflow:hidden;
+      transition:border-color .18s,box-shadow .18s,transform .1s,background .18s;
+    }
+    .drink-card.active{
+      border-color:var(--accent);
+      box-shadow:0 12px 30px rgba(0,0,0,0.95);
+      transform:translateY(-1px);
+      background:radial-gradient(circle at top,#1f2937,#020617);
+    }
+    .drink-name{font-weight:700;font-size:.9rem;}
+    .drink-price{font-size:.85rem;color:var(--accent);margin-top:.25rem;}
+    .pill{
+      display:inline-block;
+      padding:.18rem .6rem;
+      border-radius:999px;
+      font-size:.7rem;
+      background:var(--accent-soft);
+      color:var(--accent);
+      margin-top:.25rem;
+      font-weight:600;
+    }
+
+    /* السلة / الملخص */
+    .summary-row{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-top:.45rem;
+      font-size:.9rem;
+    }
+    .big-price{
+      font-size:1.25rem;
+      font-weight:800;
+      color:var(--accent);
+    }
+    .badge-soft{
+      display:inline-flex;
+      align-items:center;
+      gap:.25rem;
+      padding:.18rem .6rem;
+      border-radius:999px;
+      font-size:.72rem;
+      background:rgba(15,23,42,0.9);
+      color:var(--accent);
+      font-weight:600;
+      border:1px solid rgba(55,65,81,0.9);
+    }
+    .cart-items{
+      margin-top:.4rem;
+      font-size:.8rem;
+      color:var(--text-sub);
+      max-height:120px;
+      overflow-y:auto;
+    }
+
+    /* التايملاين */
+    .status-dot{
+      width:11px;height:11px;border-radius:50%;
+      background:#4b5563;
+      display:inline-block;margin-left:.3rem;
+      box-shadow:0 0 0 0 rgba(74,222,128,0);
+      transition:background .18s,box-shadow .25s;
+    }
+    .status-dot.active{
+      background:var(--success);
+      box-shadow:0 0 0 4px rgba(74,222,128,0.25);
+    }
+    .timeline{
+      display:flex;
+      justify-content:space-between;
+      margin-top:.65rem;
+      font-size:.75rem;
+      color:var(--text-sub);
+    }
+    .timeline-step{text-align:center;flex:1;}
+    .timeline-step span.label{display:block;margin-top:.22rem;}
+
+    .hint{
+      font-size:.78rem;
+      color:var(--text-sub);
+      margin-top:.15rem;
+    }
+
+    /* مودال اختيار السكر للمشروب */
+    .modal-backdrop{
+      position:fixed;
+      inset:0;
+      background:rgba(15,23,42,0.85);
+      display:none;
+      align-items:flex-end;
+      justify-content:center;
+      z-index:20;
+    }
+    .modal{
+      width:100%;
+      max-width:500px;
+      background:#020617;
+      border-radius:20px 20px 0 0;
+      padding:1rem 1rem 1.1rem;
+      border-top:1px solid #374151;
+      box-shadow:0 -10px 30px rgba(0,0,0,0.7);
+    }
+    .modal-header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:.4rem;
+    }
+    .modal-close{
+      background:transparent;
+      border:none;
+      color:var(--text-sub);
+      font-size:1.1rem;
+      width:auto;
+      padding:0 .4rem;
+    }
+  </style>
+
+  <!-- Firebase compat SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <div class="logo-icon"></div>
+    <div>
+      <div class="logo-text-main">المتعة في الطريق</div>
+      <div class="logo-text-sub">قهوتك على طريقك وأنت سايق</div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- شاشة الدخول / التسجيل -->
+  <section id="authCard" class="card">
+    <div class="section-title">حسابك</div>
+    <h2>أهلاً بيك 👋</h2>
+    <p class="small">سجّل مرة واحدة، وبعدها طلبك يتم في ثواني.</p>
+    <label>البريد الإلكتروني</label>
+    <input type="email" id="email" placeholder="example@mail.com" />
+    <label>كلمة المرور</label>
+    <input type="password" id="password" placeholder="••••••••" />
+    <button id="btnAuth" class="primary">دخول / إنشاء حساب</button>
+    <div id="authMsg" class="error"></div>
+  </section>
+
+  <!-- بيانات العميل -->
+  <section id="profileCard" class="card" style="display:none;">
+    <div class="section-title">بياناتك</div>
+    <h3>بيانات سيارتك</h3>
+    <p class="small">تُحفظ تلقائياً ولا تحتاج تدخلها تاني.</p>
+    <label>الاسم</label>
+    <input type="text" id="custName" placeholder="الاسم كامل" />
+    <label>رقم الجوال</label>
+    <input type="tel" id="custPhone" placeholder="01xxxxxxxxx" />
+    <label>رقم العربية</label>
+    <input type="text" id="custCar" placeholder="مثال: س ع 1234" />
+    <button id="btnSaveProfile">حفظ البيانات</button>
+    <div id="profileMsg" class="success"></div>
+  </section>
+
+  <!-- شاشة الطلب الرئيسية -->
+  <section id="orderCard" class="card" style="display:none;">
+    <div class="section-title">طلب جديد</div>
+    <h3>اختار المحل على طريقك</h3>
+    <div id="locationMsg" class="small">
+      <span class="pulse-dot"></span>
+      جاري تحديد موقعك لعرض المحلات القريبة...
+    </div>
+
+    <!-- أقرب محل -->
+    <div style="margin-top:.6rem;">
+      <div class="store-chip">
+        <div>
+          <div class="small">المحل المقترح الآن</div>
+          <div id="nearestStoreName">غير محدد</div>
+        </div>
+        <div class="distance" id="nearestStoreDistance"></div>
+      </div>
+    </div>
+
+    <!-- قائمة المحلات المنظمة -->
+    <h4 style="margin-top:.8rem;">محلات قريبة</h4>
+    <div id="storesStrip" class="stores-list-vertical"></div>
+
+    <!-- قائمة المشروبات -->
+    <h4 style="margin-top:.8rem;">مشروبات المحل</h4>
+    <div id="drinksContainer">
+      <div class="small">اختر محل أولاً ليتم تحميل المشروبات.</div>
+    </div>
+
+    <!-- ملاحظات عامة للطلب -->
+    <label style="margin-top:.7rem;">ملاحظات عامة للطلب (اختياري)</label>
+    <textarea id="orderNote" placeholder="مثال: بدون سكر، فوم زيادة، أحتاج غطاء محكم."></textarea>
+
+    <!-- ملخص الطلب -->
+    <div style="margin-top:.8rem;border-top:1px dashed var(--border-subtle);padding-top:.5rem;">
+      <div class="badge-soft">
+        <span>✦</span>
+        <span>ملخص الطلب</span>
+      </div>
+      <div class="summary-row">
+        <span class="small">المحل المختار:</span>
+        <span id="summaryStore">لا يوجد</span>
+      </div>
+      <div class="summary-row">
+        <span class="small">عدد المشروبات:</span>
+        <span id="summaryItemsCount">0</span>
+      </div>
+      <div class="summary-row">
+        <span class="small">الإجمالي للعميل:</span>
+        <span class="big-price" id="summaryPrice">0 ج</span>
+      </div>
+      <div class="cart-items" id="cartItemsPreview"></div>
+      <button id="btnPlaceOrder" class="primary" disabled>تأكيد الطلب الآن</button>
+      <div id="orderMsg" class="success"></div>
+    </div>
+  </section>
+
+  <!-- حالة آخر طلب -->
+  <section id="statusCard" class="card" style="display:none;">
+    <div class="section-title">حالة طلبك</div>
+    <h3>آخر طلب</h3>
+    <div id="lastOrderInfo" class="small"></div>
+    <div class="timeline">
+      <div class="timeline-step">
+        <span class="status-dot" id="dotPending"></span>
+        <span class="label">تم الإرسال</span>
+      </div>
+      <div class="timeline-step">
+        <span class="status-dot" id="dotPreparing"></span>
+        <span class="label">قيد التحضير</span>
+      </div>
+      <div class="timeline-step">
+        <span class="status-dot" id="dotReady"></span>
+        <span class="label">جاهز للاستلام</span>
+      </div>
+      <div class="timeline-step">
+        <span class="status-dot" id="dotDelivered"></span>
+        <span class="label">تم التسليم</span>
+      </div>
+    </div>
+    <button id="btnOpenDirections" style="margin-top:.7rem;display:none;">
+      افتح الاتجاهات للمحل
+    </button>
+    <p class="hint">خليك فاتح الصفحة، حالة طلبك بتتحدث تلقائياً لحظة بلحظة.</p>
+  </section>
+
+</main>
+
+<!-- مودال اختيار السكر للمشروب -->
+<div id="drinkModalBackdrop" class="modal-backdrop">
+  <div class="modal">
+    <div class="modal-header">
+      <h4 id="modalDrinkName">اسم المشروب</h4>
+      <button class="modal-close" id="modalCloseBtn">✕</button>
+    </div>
+    <label>درجة السكر</label>
+    <select id="modalSugarSelect">
+      <option value="normal">مظبوط</option>
+      <option value="no">سادة</option>
+      <option value="extra">زيادة</option>
+    </select>
+    <label style="margin-top:.6rem;">ملاحظة لهذا المشروب (اختياري)</label>
+    <textarea id="modalItemNote" placeholder="مثال: بدون فوم، حليب لوز، كوب كبير."></textarea>
+    <button id="modalAddBtn" class="primary" style="margin-top:.7rem;">
+      إضافة للسلة
+    </button>
+  </div>
+</div>
+
+<script>
+  // 1) إعداد Firebase بنفس مشروعك
+  const firebaseConfig = {
+    apiKey: "AIzaSyDatQR-gj_0D49LjQzcFQyn9zAmLd86NJs",
+    authDomain: "hotspot-5525c.firebaseapp.com",
+    projectId: "hotspot-5525c",
+    storageBucket: "hotspot-5525c.firebasestorage.app",
+    messagingSenderId: "499759771170",
+    appId: "1:499759771170:web:aee6cf7965f7cc374ca47b",
+    measurementId: "G-QBH7S7VEJK"
+  };
+  firebase.initializeApp(firebaseConfig);
+  const auth = firebase.auth();
+  const db   = firebase.firestore();
+
+  // 2) عناصر الواجهة
+  const authCard = document.getElementById('authCard');
+  const profileCard = document.getElementById('profileCard');
+  const orderCard = document.getElementById('orderCard');
+  const statusCard = document.getElementById('statusCard');
+
+  const emailInput = document.getElementById('email');
+  const passInput = document.getElementById('password');
+  const btnAuth = document.getElementById('btnAuth');
+  const authMsg = document.getElementById('authMsg');
+
+  const custName = document.getElementById('custName');
+  const custPhone = document.getElementById('custPhone');
+  const custCar = document.getElementById('custCar');
+  const btnSaveProfile = document.getElementById('btnSaveProfile');
+  const profileMsg = document.getElementById('profileMsg');
+
+  const locationMsg = document.getElementById('locationMsg');
+  const nearestStoreName = document.getElementById('nearestStoreName');
+  const nearestStoreDistance = document.getElementById('nearestStoreDistance');
+  const storesStrip = document.getElementById('storesStrip');
+  const drinksContainer = document.getElementById('drinksContainer');
+
+  const orderNote = document.getElementById('orderNote');
+
+  const summaryStore = document.getElementById('summaryStore');
+  const summaryItemsCount = document.getElementById('summaryItemsCount');
+  const summaryPrice = document.getElementById('summaryPrice');
+  const cartItemsPreview = document.getElementById('cartItemsPreview');
+  const btnPlaceOrder = document.getElementById('btnPlaceOrder');
+  const orderMsg = document.getElementById('orderMsg');
+
+  const lastOrderInfo = document.getElementById('lastOrderInfo');
+  const dotPending = document.getElementById('dotPending');
+  const dotPreparing = document.getElementById('dotPreparing');
+  const dotReady = document.getElementById('dotReady');
+  const dotDelivered = document.getElementById('dotDelivered');
+  const btnOpenDirections = document.getElementById('btnOpenDirections');
+
+  // عناصر المودال
+  const drinkModalBackdrop = document.getElementById('drinkModalBackdrop');
+  const modalDrinkName = document.getElementById('modalDrinkName');
+  const modalSugarSelect = document.getElementById('modalSugarSelect');
+  const modalItemNote = document.getElementById('modalItemNote');
+  const modalAddBtn = document.getElementById('modalAddBtn');
+  const modalCloseBtn = document.getElementById('modalCloseBtn');
+
+  let currentUser = null;
+  let userDoc = null;
+  let customerLocation = null;
+  let stores = [];
+  let selectedStore = null;
+  let lastOrder = null;
+
+  // سلة المشروبات
+  let cartItems = []; // [{id,name,basePrice,quantity,sugarLevel,itemNote}]
+  let modalCurrentDrink = null;
+
+  // 3) تسجيل الدخول / إنشاء حساب
+  btnAuth.onclick = async () => {
+    authMsg.textContent = '';
+    const email = emailInput.value.trim();
+    const pass = passInput.value.trim();
+    if(!email || !pass){
+      authMsg.textContent = 'ادخل البريد وكلمة المرور.';
+      return;
+    }
+    try{
+      const cred = await auth.signInWithEmailAndPassword(email,pass);
+      currentUser = cred.user;
+      afterLogin();
+    }catch(e){
+      try{
+        const cred = await auth.createUserWithEmailAndPassword(email,pass);
+        currentUser = cred.user;
+        await db.collection('users').doc(currentUser.uid).set({
+          role: 'customer',
+          email,
+          name:'',
+          phone:'',
+          carNumber:'',
+          createdAt: firebase.firestore.FieldValue.serverTimestamp()
+        });
+        afterLogin();
+      }catch(err){
+        authMsg.textContent = err.message;
+      }
+    }
+  };
+
+  auth.onAuthStateChanged(async (user)=>{
+    if(user){
+      currentUser = user;
+      afterLogin();
+    }
+  });
+
+  async function afterLogin(){
+    authCard.style.display = 'none';
+    const doc = await db.collection('users').doc(currentUser.uid).get();
+    if(doc.exists){
+      userDoc = doc.data();
+      custName.value = userDoc.name || '';
+      custPhone.value = userDoc.phone || '';
+      custCar.value = userDoc.carNumber || '';
+    }
+    profileCard.style.display = 'block';
+    orderCard.style.display = 'block';
+    statusCard.style.display = 'block';
+    getLocationAndLoadStores();
+    listenLastOrder();
+  }
+
+  // 4) حفظ بيانات العميل
+  btnSaveProfile.onclick = async () => {
+    profileMsg.textContent = '';
+    const name = custName.value.trim();
+    const phone = custPhone.value.trim();
+    const car = custCar.value.trim();
+    if(!name || !phone){
+      profileMsg.style.color = '#f97373';
+      profileMsg.textContent = 'الاسم ورقم الجوال مطلوبان.';
+      return;
+    }
+    try{
+      await db.collection('users').doc(currentUser.uid).update({
+        name, phone, carNumber:car
+      });
+      profileMsg.style.color = '#4ade80';
+      profileMsg.textContent = 'تم حفظ البيانات.';
+    }catch(e){
+      profileMsg.style.color = '#f97373';
+      profileMsg.textContent = 'خطأ في حفظ البيانات.';
+    }
+  };
+
+  // 5) جلب الموقع + تحميل المحلات
+  function getLocationAndLoadStores(){
+    if(!navigator.geolocation){
+      locationMsg.textContent = 'المتصفح لا يدعم تحديد الموقع، سيتم عرض كل المحلات.';
+      loadStores();
+      return;
+    }
+    navigator.geolocation.getCurrentPosition(pos=>{
+      customerLocation = {
+        lat: pos.coords.latitude,
+        lng: pos.coords.longitude
+      };
+      locationMsg.textContent = 'تم تحديد موقعك، جاري جلب أقرب المحلات...';
+      loadStores();
+    },err=>{
+      locationMsg.textContent = 'تعذر الحصول على موقعك، سيتم عرض كل المحلات.';
+      loadStores();
+    });
+  }
+
+  async function loadStores(){
+    const snap = await db.collection('stores').where('isActive','==',true).get();
+    stores = [];
+    snap.forEach(d=>{
+      const s = d.data();
+      s.id = d.id;
+      stores.push(s);
+    });
+    if(stores.length === 0){
+      locationMsg.textContent = 'لا توجد محلات متاحة حالياً.';
+      return;
+    }
+    if(customerLocation){
+      for(const s of stores){
+        if(s.location && s.location.latitude){
+          s.distanceKm = haversine(
+            customerLocation.lat,customerLocation.lng,
+            s.location.latitude,s.location.longitude
+          );
+        }else{
+          s.distanceKm = 9999;
+        }
+      }
+      stores.sort((a,b)=>a.distanceKm - b.distanceKm);
+    }
+    renderStoresList();
+    selectStore(stores[0]);
+  }
+
+  function haversine(lat1,lon1,lat2,lon2){
+    const R = 6371;
+    const toRad = d=>d*Math.PI/180;
+    const dLat = toRad(lat2-lat1);
+    const dLon = toRad(lon2-lon1);
+    const a = Math.sin(dLat/2)**2 +
+      Math.cos(toRad(lat1))*Math.cos(toRad(lat2))*Math.sin(dLon/2)**2;
+    const c = 2*Math.atan2(Math.sqrt(a),Math.sqrt(1-a));
+    return R*c;
+  }
+
+  function renderStoresList(){
+    storesStrip.innerHTML = '';
+    stores.forEach(s=>{
+      const card = document.createElement('div');
+      card.className = 'store-card';
+      card.dataset.id = s.id;
+      const distanceText = (s.distanceKm && s.distanceKm < 9000)
+        ? `${s.distanceKm.toFixed(1)} كم تقريباً`
+        : '';
+      card.innerHTML = `
+        <div class="store-name">${s.name || 'محل بدون اسم'}</div>
+        <div class="store-meta">
+          ${(s.address || '')}
+          ${distanceText ? '<br>' + distanceText : ''}
+        </div>
+        <div class="store-actions">
+          <button class="btn-xs primarySelect">اختيار هذا المحل</button>
+          <button class="btn-xs btn-ghost mapBtn">شوف على الخريطة</button>
+        </div>
+      `;
+      card.querySelector('.primarySelect').onclick = (e)=>{
+        e.stopPropagation();
+        selectStore(s);
+      };
+      card.querySelector('.mapBtn').onclick = (e)=>{
+        e.stopPropagation();
+        openDirectionsToStore(s);
+      };
+      card.onclick = ()=>selectStore(s);
+      storesStrip.appendChild(card);
+    });
+  }
+
+  function selectStore(store){
+    selectedStore = store;
+    cartItems = []; // تنظيف السلة عند تغيير المحل
+    updateCartUI();
+
+    [...storesStrip.children].forEach(c=>{
+      c.classList.toggle('active', c.dataset.id === store.id);
+    });
+
+    nearestStoreName.textContent = store.name;
+    if(store.distanceKm && store.distanceKm < 9000){
+      const mins = Math.round((store.distanceKm/30)*60);
+      nearestStoreDistance.textContent = `≈ ${store.distanceKm.toFixed(1)} كم / ${mins} دقيقة`;
+    }else{
+      nearestStoreDistance.textContent = '';
+    }
+    summaryStore.textContent = store.name;
+    btnPlaceOrder.disabled = true;
+    loadDrinksForStore(store.id);
+  }
+
+  function openDirectionsToStore(store){
+    if(!store || !store.location){
+      alert('لا توجد إحداثيات كافية للمحل.');
+      return;
+    }
+    const lat = store.location.latitude;
+    const lng = store.location.longitude;
+    const url = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
+    window.open(url,'_blank');
+  }
+
+  // 6) تحميل المشروبات
+  async function loadDrinksForStore(storeId){
+    drinksContainer.innerHTML = '<div class="small">جارٍ تحميل المشروبات...</div>';
+    const snap = await db.collection('drinks').where('storeId','==',storeId).get();
+    if(snap.empty){
+      drinksContainer.innerHTML = '<div class="small">لا توجد مشروبات لهذا المحل حالياً.</div>';
+      return;
+    }
+    const list = document.createElement('div');
+    list.className = 'drink-list';
+    snap.forEach(d=>{
+      const drink = d.data();
+      const base = drink.basePrice || drink.price || 0;
+      const finalPrice = base + 5;
+      const card = document.createElement('div');
+      card.className = 'drink-card';
+      card.onclick = ()=>{
+        openDrinkModal({id:d.id,name:drink.name,basePrice:base});
+      };
+      card.innerHTML = `
+        <div class="drink-name">${drink.name}</div>
+        <div class="drink-price">${finalPrice} ج</div>
+        <div class="pill">اختيار</div>
+      `;
+      list.appendChild(card);
+    });
+    drinksContainer.innerHTML = '';
+    drinksContainer.appendChild(list);
+  }
+
+  // مودال: اختيار السكر + ملاحظة للمشروب
+  function openDrinkModal(drink){
+    if(!selectedStore){
+      orderMsg.style.color='#f97373';
+      orderMsg.textContent='اختر محل أولاً.';
+      return;
+    }
+    modalCurrentDrink = drink;
+    modalDrinkName.textContent = drink.name;
+    modalSugarSelect.value = 'normal';
+    modalItemNote.value = '';
+    drinkModalBackdrop.style.display = 'flex';
+  }
+  function closeDrinkModal(){
+    drinkModalBackdrop.style.display = 'none';
+    modalCurrentDrink = null;
+  }
+  modalCloseBtn.onclick = closeDrinkModal;
+  drinkModalBackdrop.onclick = (e)=>{
+    if(e.target === drinkModalBackdrop) closeDrinkModal();
+  };
+  modalAddBtn.onclick = ()=>{
+    if(!modalCurrentDrink) return;
+    const sugarLevel = modalSugarSelect.value || 'normal';
+    const itemNote = modalItemNote.value.trim() || null;
+    addDrinkToCart(modalCurrentDrink,sugarLevel,itemNote);
+    closeDrinkModal();
+  };
+
+  function addDrinkToCart(drink,sugarLevel,itemNote){
+    orderMsg.textContent = '';
+    const existing = cartItems.find(i=>i.id === drink.id && i.sugarLevel === sugarLevel && i.itemNote === itemNote);
+    if(existing){
+      existing.quantity += 1;
+    }else{
+      cartItems.push({
+        id: drink.id,
+        name: drink.name,
+        basePrice: drink.basePrice,
+        quantity: 1,
+        sugarLevel,
+        itemNote
+      });
+    }
+    updateCartUI();
+  }
+
+  function updateCartUI(){
+    const totalItems = cartItems.reduce((s,i)=>s + i.quantity,0);
+    summaryItemsCount.textContent = totalItems;
+    const baseTotal = cartItems.reduce((s,i)=>s + i.basePrice * i.quantity,0);
+    const serviceTotal = cartItems.reduce((s,i)=>s + 5 * i.quantity,0);
+    const totalCustomerPrice = baseTotal + serviceTotal;
+    summaryPrice.textContent = totalCustomerPrice + ' ج';
+
+    cartItemsPreview.innerHTML = '';
+    if(cartItems.length === 0){
+      cartItemsPreview.textContent = 'لم تضف أي مشروب بعد.';
+      btnPlaceOrder.disabled = true;
+      return;
+    }
+    cartItems.forEach(i=>{
+      const line = document.createElement('div');
+      const sugarLabel = i.sugarLevel === 'no' ? 'سادة' :
+        i.sugarLevel === 'extra' ? 'زيادة' : 'مظبوط';
+      const notePart = i.itemNote ? ` • ${i.itemNote}` : '';
+      line.textContent = `${i.name} × ${i.quantity} • ${sugarLabel}${notePart}`;
+      cartItemsPreview.appendChild(line);
+    });
+    btnPlaceOrder.disabled = false;
+  }
+
+  // 7) إنشاء طلب
+  btnPlaceOrder.onclick = async ()=>{
+    orderMsg.textContent = '';
+    if(!selectedStore || cartItems.length === 0){
+      orderMsg.style.color='#f97373';
+      orderMsg.textContent='اختر محل وأضف مشروب واحد على الأقل.';
+      return;
+    }
+    const car = custCar.value.trim();
+    const name = custName.value.trim();
+    if(!name){
+      orderMsg.style.color='#f97373';
+      orderMsg.textContent='اكتب اسمك واحفظ البيانات أولاً.';
+      return;
+    }
+    let customerGeo = null;
+    if(customerLocation){
+      customerGeo = new firebase.firestore.GeoPoint(customerLocation.lat,customerLocation.lng);
+    }
+
+    const items = cartItems.map(item=>{
+      const base = item.basePrice;
+      const serviceFee = 5;
+      const driverFee = 0;
+      const totalItemPrice = (base + serviceFee + driverFee) * item.quantity;
+      return {
+        drinkId: item.id,
+        drinkName: item.name,
+        basePrice: base,
+        quantity: item.quantity,
+        sugarLevel: item.sugarLevel,
+        itemNote: item.itemNote || null,
+        serviceFee,
+        driverFee,
+        totalItemPrice
+      };
+    });
+    const baseTotal = items.reduce((s,i)=>s + i.basePrice * i.quantity,0);
+    const serviceTotal = items.reduce((s,i)=>s + i.serviceFee * i.quantity,0);
+    const driverTotal = 0;
+    const totalCustomerPrice = baseTotal + serviceTotal + driverTotal;
+
+    const note = orderNote.value.trim() || null;
+
+    const orderData = {
+      customerId: currentUser.uid,
+      storeId: selectedStore.id,
+      driverId: null,
+      items,
+      baseTotal,
+      serviceTotal,
+      driverTotal,
+      totalCustomerPrice,
+      carNumber: car,
+      customerLocation: customerGeo,
+      note,
+      status: 'pending',
+      platformCommissionSettled: false,
+      driverPaid: false,
+      storePaidOut: false,
+      createdAt: firebase.firestore.FieldValue.serverTimestamp()
+    };
+    try{
+      await db.collection('orders').add(orderData);
+      orderMsg.style.color='#4ade80';
+      orderMsg.textContent='تم إرسال طلبك بنجاح، تابع الحالة بالأسفل.';
+      btnPlaceOrder.disabled = true;
+      cartItems = [];
+      updateCartUI();
+    }catch(e){
+      orderMsg.style.color='#f97373';
+      orderMsg.textContent='حدث خطأ في إرسال الطلب.';
+    }
+  };
+
+  // 8) متابعة آخر طلب للعميل
+  function listenLastOrder(){
+    if(!currentUser) return;
+    db.collection('orders')
+      .where('customerId','==',currentUser.uid)
+      .orderBy('createdAt','desc').limit(1)
+      .onSnapshot(snap=>{
+        lastOrder = null;
+        snap.forEach(doc=>{
+          lastOrder = doc.data();
+        });
+        renderLastOrder();
+      });
+  }
+
+  function renderLastOrder(){
+    if(!lastOrder){
+      statusCard.style.display='none';
+      return;
+    }
+    statusCard.style.display='block';
+    const drinkName = lastOrder.drinkName || (lastOrder.items && lastOrder.items[0]?.drinkName) || '';
+    const price = lastOrder.totalCustomerPrice || lastOrder.items?.[0]?.totalItemPrice || '';
+    lastOrderInfo.textContent = `${drinkName || 'طلب قهوة'} • ${price} ج • الحالة: ${lastOrder.status}`;
+    const st = lastOrder.status;
+    dotPending.classList.toggle('active', ['pending','accepted','preparing','ready','on_the_way','delivered'].includes(st));
+    dotPreparing.classList.toggle('active', ['preparing','ready','on_the_way','delivered'].includes(st));
+    dotReady.classList.toggle('active', ['ready','on_the_way','delivered'].includes(st));
+    dotDelivered.classList.toggle('active', ['delivered'].includes(st));
+
+    if(st === 'ready' || st === 'on_the_way'){
+      btnOpenDirections.style.display='block';
+      btnOpenDirections.onclick = ()=>{
+        if(!selectedStore || !selectedStore.location){
+          alert('لا توجد إحداثيات كافية للمحل.');
+          return;
+        }
+        openDirectionsToStore(selectedStore);
+      };
+    }else{
+      btnOpenDirections.style.display='none';
+    }
+  }
+</script>
+</body>
+</html>      height:46px;
       border-radius:18px;
       background:
         #ffffff
