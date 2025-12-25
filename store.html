@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <title>المتعة في الطريق - لوحة المحل والمندوب</title>
+  <title>المتعة في الطريق - لوحة الإدارة</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     :root{
@@ -132,6 +132,25 @@
       font-weight:600;
       margin:.4rem 0;
     }
+    .pill-group{
+      display:flex;
+      gap:.3rem;
+      flex-wrap:wrap;
+      margin-top:.35rem;
+    }
+    .pill{
+      padding:.15rem .7rem;
+      border-radius:999px;
+      border:1px solid #ffcc80;
+      font-size:.75rem;
+      cursor:pointer;
+      background:#fffaf0;
+    }
+    .pill.active{
+      background:var(--main);
+      color:#fff;
+      border-color:var(--main-dark);
+    }
   </style>
 
   <!-- Firebase compat SDK -->
@@ -143,7 +162,7 @@
 
 <header>
   المتعة في الطريق
-  <div class="sub">لوحة تحكم المحل والمندوب والأدمن</div>
+  <div class="sub">لوحة المحل / المندوب / الأدمن - مع الأنواع ورسوم الخدمة</div>
 </header>
 
 <main>
@@ -180,10 +199,10 @@
     <!-- شريط التبويبات -->
     <nav id="navBar" style="display:none;">
       <button id="tabStoreOrders">طلبات المحل</button>
-      <button id="tabStoreMenu">قائمة المشروبات</button>
-      <button id="tabDrivers"  >المندوبون</button>
+      <button id="tabStoreMenu">قائمة المنتجات</button>
+      <button id="tabDrivers">المندوبون</button>
       <button id="tabDriverOrders">لوحة المندوب</button>
-      <button id="tabAdmin"  >لوحة الأدمن</button>
+      <button id="tabAdmin">لوحة الأدمن</button>
     </nav>
 
     <!-- محتوى المحل: الطلبات -->
@@ -192,16 +211,22 @@
       <ul id="storeOrdersList"></ul>
     </div>
 
-    <!-- محتوى المحل: قائمة المشروبات -->
+    <!-- محتوى المحل: قائمة المنتجات (مشروبات / مخبوزات / ماركت) -->
     <div id="storeMenuSection" style="display:none;margin-top:.3rem;">
-      <div class="section-title">قائمة المشروبات</div>
-      <label>اسم المشروب</label>
-      <input type="text" id="drinkName" placeholder="مثال: كابتشينو" />
+      <div class="section-title">نوع خدمة المحل</div>
+      <div class="pill-group" id="storeTypePills">
+        <div class="pill" data-type="drinks">مشروبات</div>
+        <div class="pill" data-type="bakery">مخبوزات</div>
+        <div class="pill" data-type="market">ماركت</div>
+      </div>
+
+      <label style="margin-top:.6rem;">اسم المنتج</label>
+      <input type="text" id="drinkName" placeholder="مثال: كابتشينو / كرواسون / شوكولاتة" />
       <label>سعر المحل (جنيه)</label>
       <input type="number" id="drinkPrice" min="0" placeholder="مثال: 30" />
-      <button id="btnAddDrink">إضافة مشروب</button>
+      <button id="btnAddDrink">إضافة منتج</button>
       <div id="drinkMsg" class="success"></div>
-      <h4 style="margin-top:.7rem;">المشروبات الحالية</h4>
+      <h4 style="margin-top:.7rem;">المنتجات الحالية</h4>
       <ul id="drinkList"></ul>
     </div>
 
@@ -239,14 +264,25 @@
       <div class="section-title" style="margin-top:.8rem;">إدارة الطلبات (آخر 30 طلب)</div>
       <ul id="adminOrdersList"></ul>
 
-      <div class="section-title" style="margin-top:.8rem;">إضافة مشروب مجاني لعميل</div>
+      <div class="section-title" style="margin-top:.8rem;">إعداد رسوم الخدمة لكل نوع</div>
+      <p class="small">هذه الرسوم ستُستخدم في تطبيق العميل لكل نوع خدمة.</p>
+      <label>رسوم خدمة المشروبات (feeDrinks)</label>
+      <input type="number" id="feeDrinks" min="0" placeholder="مثال: 5" />
+      <label>رسوم خدمة المخبوزات (feeBakery)</label>
+      <input type="number" id="feeBakery" min="0" placeholder="مثال: 3" />
+      <label>رسوم خدمة الماركت (feeMarket)</label>
+      <input type="number" id="feeMarket" min="0" placeholder="مثال: 7" />
+      <button id="btnSaveFees">حفظ رسوم الخدمة</button>
+      <div id="feesMsg" class="success"></div>
+
+      <div class="section-title" style="margin-top:.8rem;">إضافة مشروب/منتج مجاني لعميل</div>
       <label>معرف العميل (customerId)</label>
       <input type="text" id="freeCustomerId" placeholder="uid العميل (مؤقتاً)" />
       <label>معرف المحل (storeId)</label>
       <input type="text" id="freeStoreId" placeholder="storeId المستهدف" />
-      <label>معرف المشروب (اختياري - drinkId)</label>
-      <input type="text" id="freeDrinkId" placeholder="إن تركته فارغاً، تطبق على أي مشروب بحد سعر" />
-      <label>أقصى سعر أساسي للمشروب (اختياري)</label>
+      <label>معرف المنتج (اختياري - drinkId)</label>
+      <input type="text" id="freeDrinkId" placeholder="إن تركته فارغاً، تطبق على أي منتج بحد سعر" />
+      <label>أقصى سعر أساسي للمنتج (اختياري)</label>
       <input type="number" id="freeMaxBase" min="0" placeholder="مثال: 30" />
       <button id="btnAddFreeDrink">إضافة هدية للعميل</button>
       <div id="freeDrinkMsg" class="success"></div>
@@ -299,6 +335,7 @@
   const btnAddDrink      = document.getElementById('btnAddDrink');
   const drinkMsg         = document.getElementById('drinkMsg');
   const drinkList        = document.getElementById('drinkList');
+  const storeTypePills   = document.getElementById('storeTypePills');
 
   const driversSection       = document.getElementById('driversSection');
   const driverRequestsList   = document.getElementById('driverRequestsList');
@@ -315,6 +352,12 @@
   const adminStoresList   = document.getElementById('adminStoresList');
   const adminDriversList  = document.getElementById('adminDriversList');
   const adminOrdersList   = document.getElementById('adminOrdersList');
+  const feeDrinksInput    = document.getElementById('feeDrinks');
+  const feeBakeryInput    = document.getElementById('feeBakery');
+  const feeMarketInput    = document.getElementById('feeMarket');
+  const btnSaveFees       = document.getElementById('btnSaveFees');
+  const feesMsg           = document.getElementById('feesMsg');
+
   const freeCustomerId    = document.getElementById('freeCustomerId');
   const freeStoreId       = document.getElementById('freeStoreId');
   const freeDrinkId       = document.getElementById('freeDrinkId');
@@ -326,6 +369,8 @@
   let userDoc     = null;
   let userRole    = null;
   let storeDocId  = null;
+  let storeDocRef = null;
+  let storeType   = 'drinks'; // default
 
   // 3) دخول / إنشاء حساب
   btnAuth.onclick = async () => {
@@ -405,6 +450,7 @@
       tabStoreMenu.style.display    = 'inline-block';
       tabDrivers.style.display      = 'inline-block';
       await findOrCreateStoreForOwner();
+      setupStoreTypeUI();
       openStoreOrders();
       listenStoreOrders();
       loadStoreDrinks();
@@ -423,6 +469,7 @@
       tabAdmin.style.display   = 'inline-block';
       openAdminSection();
       loadAdminData();
+      loadServiceFees();
     }
   }
 
@@ -431,24 +478,49 @@
     location.reload();
   };
 
-  // 4) ربط صاحب المحل بوثيقة store
+  // 4) ربط صاحب المحل بوثيقة store + تحديد نوع المحل
   async function findOrCreateStoreForOwner(){
     const snap = await db.collection('stores')
       .where('ownerId','==',currentUser.uid)
       .limit(1).get();
     if(snap.empty){
       const name = prompt('اكتب اسم المحل للتسجيل أول مرة:','كوفي ستاند');
+      // اختيار نوع مبدئي للمحل
+      const typePrompt = prompt('اكتب نوع المحل: drinks / bakery / market','drinks');
+      const finalType = ['drinks','bakery','market'].includes((typePrompt||'').trim()) ? typePrompt.trim() : 'drinks';
       const ref = await db.collection('stores').add({
         ownerId: currentUser.uid,
         name: name || 'محل بدون اسم',
         address: '',
         isActive: true,
-        location: null
+        location: null,
+        storeType: finalType
       });
-      storeDocId = ref.id;
+      storeDocId  = ref.id;
+      storeDocRef = ref;
+      storeType   = finalType;
     }else{
-      storeDocId = snap.docs[0].id;
+      storeDocId  = snap.docs[0].id;
+      storeDocRef = snap.docs[0].ref;
+      const data  = snap.docs[0].data();
+      storeType   = data.storeType || 'drinks';
     }
+  }
+
+  // التعامل مع UI اختيار نوع المحل (لصاحب المحل)
+  function setupStoreTypeUI(){
+    if(!storeDocRef) return;
+    [...storeTypePills.children].forEach(p=>{
+      const type = p.dataset.type;
+      if(type === storeType) p.classList.add('active');
+      p.onclick = async ()=>{
+        storeType = type;
+        [...storeTypePills.children].forEach(x=>x.classList.remove('active'));
+        p.classList.add('active');
+        // تحديث نوع المحل في Firestore
+        await storeDocRef.update({storeType});
+      };
+    });
   }
 
   // 5) تبويب التنقّل
@@ -471,7 +543,7 @@
   function openDriverPanel(){ hideAllSections(); if(userRole==='driver') driverPanelSection.style.display = 'block'; }
   function openAdminSection(){ hideAllSections(); if(userRole==='admin') adminSection.style.display = 'block'; }
 
-  // 6) إدارة مشروبات المحل
+  // 6) إدارة منتجات المحل (drinks/products)
   btnAddDrink.onclick = async ()=>{
     drinkMsg.textContent = '';
     const name = drinkName.value.trim();
@@ -481,16 +553,22 @@
       drinkMsg.textContent = 'أدخل اسم وسعر صحيحين.';
       return;
     }
+    if(!storeDocId){
+      drinkMsg.style.color = '#d32f2f';
+      drinkMsg.textContent = 'لم يتم ربط المحل بعد.';
+      return;
+    }
     try{
       await db.collection('drinks').add({
         storeId: storeDocId,
         name,
-        basePrice: price
+        basePrice: price,
+        storeType: storeType // مهم للتمييز في تطبيق العميل
       });
       drinkName.value = '';
       drinkPrice.value = '';
       drinkMsg.style.color = '#2e7d32';
-      drinkMsg.textContent = 'تم إضافة المشروب.';
+      drinkMsg.textContent = 'تم إضافة المنتج.';
       loadStoreDrinks();
     }catch(e){
       drinkMsg.style.color = '#d32f2f';
@@ -504,7 +582,7 @@
       .where('storeId','==',storeDocId).get();
     drinkList.innerHTML = '';
     if(snap.empty){
-      drinkList.innerHTML = '<li class="small">لا توجد مشروبات بعد.</li>';
+      drinkList.innerHTML = '<li class="small">لا توجد منتجات بعد.</li>';
       return;
     }
     snap.forEach(doc=>{
@@ -514,7 +592,8 @@
         <div class="row">
           <div>
             <b>${d.name}</b><br>
-            <span class="small">سعر المحل: ${d.basePrice} ج</span>
+            <span class="small">سعر المحل: ${d.basePrice} ج</span><br>
+            <span class="small">نوع الخدمة: ${d.storeType || '-'}</span>
           </div>
         </div>
       `;
@@ -522,7 +601,7 @@
     });
   }
 
-  // 7) طلبات المحل
+  // 7) طلبات المحل + زر خريطة من المحل للعميل
   function listenStoreOrders(){
     if(!storeDocId) return;
     db.collection('orders')
@@ -539,6 +618,7 @@
           const o = doc.data();
           const drinkName = o.drinkName || (o.items && o.items[0]?.drinkName) || '';
           const price     = o.totalCustomerPrice || (o.items && o.items[0]?.totalItemPrice) || 0;
+
           const li = document.createElement('li');
           li.innerHTML = `
             <div class="row">
@@ -546,7 +626,8 @@
                 <b>${drinkName}</b>
                 <span class="tag tag-status">${o.status}</span><br>
                 <span class="small">السعر للعميل: ${price} ج</span><br>
-                <span class="small">عربية: ${o.carNumber || '-'}</span>
+                <span class="small">عربية: ${o.carNumber || '-'}</span><br>
+                <button class="small secondary" data-map="open">خريطة للعميل</button>
               </div>
               <div>
                 <button class="small" data-action="toPreparing">قيد التحضير</button>
@@ -556,7 +637,13 @@
             </div>
           `;
           li.querySelectorAll('button').forEach(b=>{
-            b.onclick = ()=>updateOrderStatusFromStore(doc.id, b.dataset.action);
+            const act = b.dataset.action;
+            const map = b.dataset.map;
+            if(map === 'open'){
+              b.onclick = ()=>openMapStoreToCustomer(o);
+            }else{
+              b.onclick = ()=>updateOrderStatusFromStore(doc.id, act);
+            }
           });
           storeOrdersList.appendChild(li);
         });
@@ -570,6 +657,26 @@
     if(action === 'toDelivered') newStatus = 'delivered';
     if(!newStatus) return;
     await db.collection('orders').doc(orderId).update({ status:newStatus });
+  }
+
+  // فتح خريطة من موقع المحل إلى موقع العميل
+  function openMapStoreToCustomer(orderData){
+    // يفترض أن عندك في الطلب حقول customerLat, customerLng
+    // وفي المحل stores.location كـ GeoPoint
+    if(!storeDocRef) return;
+    storeDocRef.get().then(doc=>{
+      const s = doc.data();
+      if(!s.location || !orderData.customerLat || !orderData.customerLng){
+        alert('موقع المحل أو العميل غير متوفر.');
+        return;
+      }
+      const latStore = s.location.latitude;
+      const lngStore = s.location.longitude;
+      const latCust  = orderData.customerLat;
+      const lngCust  = orderData.customerLng;
+      const url = `https://www.google.com/maps/dir/?api=1&origin=${latStore},${lngStore}&destination=${latCust},${lngCust}&travelmode=driving`;
+      window.open(url,'_blank');
+    });
   }
 
   // 8) ربط المندوبين بالمحل
@@ -637,7 +744,8 @@
       const s = d.data();
       const opt = document.createElement('option');
       opt.value = d.id;
-      opt.textContent = s.name || d.id;
+      const t = s.storeType === 'bakery' ? ' (مخبوزات)' : (s.storeType === 'market' ? ' (ماركت)' : ' (مشروبات)');
+      opt.textContent = (s.name || d.id) + t;
       storesSelect.appendChild(opt);
     });
   }
@@ -738,7 +846,7 @@
     await db.collection('orders').doc(orderId).update({ status:newStatus });
   }
 
-  // 10) لوحة الأدمن: تحميل البيانات
+  // 10) لوحة الأدمن: تحميل البيانات + إعداد رسوم الخدمة
   async function loadAdminData(){
     // المحلات
     const storesSnap = await db.collection('stores').get();
@@ -749,11 +857,13 @@
       storesSnap.forEach(doc=>{
         const s = doc.data();
         const li = document.createElement('li');
+        const typeLabel = s.storeType === 'bakery' ? 'مخبوزات' : (s.storeType === 'market' ? 'ماركت' : 'مشروبات');
         li.innerHTML = `
           <div class="row">
             <div>
               <b>${s.name || 'محل بدون اسم'}</b>
-              <span class="tag tag-status">${s.isActive ? 'نشط' : 'موقوف'}</span><br>
+              <span class="tag tag-status">${s.isActive ? 'نشط' : 'موقوف'}</span>
+              <span class="tag tag-role">${typeLabel}</span><br>
               <span class="small">ID: ${doc.id}</span><br>
               <span class="small">المالك: ${s.ownerId || '-'}</span>
             </div>
@@ -763,8 +873,13 @@
           </div>
         `;
         li.querySelector('button').onclick = async ()=>{
-          await db.collection('stores').doc(doc.id).update({ isActive: !s.isActive });
-          loadAdminData();
+          const cur = s.isActive;
+          try{
+            await db.collection('stores').doc(doc.id).update({isActive:!cur});
+            loadAdminData();
+          }catch(e){
+            alert('خطأ في تحديث حالة المحل.');
+          }
         };
         adminStoresList.appendChild(li);
       });
@@ -819,6 +934,49 @@
     }
   }
 
+  // قراءة / حفظ رسوم الخدمة في settings/serviceFees
+  async function loadServiceFees(){
+    feesMsg.textContent = '';
+    try{
+      const ref = db.collection('settings').doc('serviceFees');
+      const snap = await ref.get();
+      if(snap.exists){
+        const d = snap.data();
+        feeDrinksInput.value = d.feeDrinks != null ? d.feeDrinks : 0;
+        feeBakeryInput.value = d.feeBakery != null ? d.feeBakery : 0;
+        feeMarketInput.value = d.feeMarket != null ? d.feeMarket : 0;
+      }else{
+        feeDrinksInput.value = 0;
+        feeBakeryInput.value = 0;
+        feeMarketInput.value = 0;
+      }
+    }catch(e){
+      feesMsg.style.color = '#d32f2f';
+      feesMsg.textContent = 'تعذر تحميل رسوم الخدمة.';
+    }
+  }
+
+  btnSaveFees.onclick = async ()=>{
+    feesMsg.textContent = '';
+    const feeDrinks = feeDrinksInput.value ? parseFloat(feeDrinksInput.value) : 0;
+    const feeBakery = feeBakeryInput.value ? parseFloat(feeBakeryInput.value) : 0;
+    const feeMarket = feeMarketInput.value ? parseFloat(feeMarketInput.value) : 0;
+    try{
+      await db.collection('settings').doc('serviceFees').set({
+        feeDrinks,
+        feeBakery,
+        feeMarket,
+        updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+      },{merge:true});
+      feesMsg.style.color = '#2e7d32';
+      feesMsg.textContent = 'تم حفظ رسوم الخدمة بنجاح.';
+    }catch(e){
+      feesMsg.style.color = '#d32f2f';
+      feesMsg.textContent = 'حدث خطأ أثناء الحفظ.';
+    }
+  };
+
+  // هدية مجانية
   btnAddFreeDrink.onclick = async ()=>{
     freeDrinkMsg.textContent = '';
     const customerId = freeCustomerId.value.trim();
@@ -851,7 +1009,7 @@
       freeDrinkMsg.style.color = '#d32f2f';
       freeDrinkMsg.textContent = 'حدث خطأ أثناء الإضافة.';
     }
-  }
+  };
 </script>
 </body>
-</html>
+  </html>
