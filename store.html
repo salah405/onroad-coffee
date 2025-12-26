@@ -694,33 +694,6 @@
   }
 
   async function loadAdminData(){
-
-  // الطلبات (آخر 30) - ✅ الجزء المفقود
-  const ordersSnap = await db.collection('orders')
-    .orderBy('createdAt','desc')
-    .limit(30).get();
-  adminOrdersList.innerHTML = '';
-  if(ordersSnap.empty){
-    adminOrdersList.innerHTML = '<li class="small">لا توجد طلبات بعد.</li>';
-  }else{
-    ordersSnap.forEach(doc=>{
-      const o = doc.data();
-      const drinkName = o.drinkName || (o.items && o.items[0]?.drinkName) || '';
-      const li = document.createElement('li');
-      li.innerHTML = `
-        <div>
-          <b>${drinkName}</b>
-          <span class="tag tag-status">${o.status}</span><br>
-          <span class="small">عميل: ${o.customerId}</span><br>
-          <span class="small">محل: ${o.storeId}</span><br>
-          <span class="small">مندوب: ${o.driverId || '-'}</span><br>
-          <span class="small">سعر: ${o.totalCustomerPrice || 0} ج</span>
-        </div>
-      `;
-      adminOrdersList.appendChild(li);
-    });
-  }
-}
     const storesSnap = await db.collection('stores').get();
     adminStoresList.innerHTML = '';
     storesSnap.forEach(doc => {
