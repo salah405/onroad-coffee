@@ -7,42 +7,39 @@
 
   <style>
     :root{
-      /* Semi‑dark gray coffee theme */
-      --bg: #111827;
-      --bg-elevated: #1f2933;
-      --bg-elevated-2: #273549;
-      --border-subtle: #374151;
-      --text-main: #f9fafb;
-      --text-sub: #9ca3af;
-      --accent: #f59e0b;
-      --accent-soft: rgba(245,158,11,0.16);
-      --danger: #f97373;
-      --success: #4ade80;
-      --shadow-soft: 0 18px 45px rgba(0,0,0,0.55);
+      /* ألوان فاتحة قريبة من لوحة الإدارة */
+      --bg: #fff7ec;
+      --bg-elevated: #ffffff;
+      --bg-elevated-2: #ffe8c7;
+      --border-subtle: #f3d2a2;
+      --text-main: #3e2723;
+      --text-sub: #6d4c41;
+      --accent: #d35400;
+      --accent-soft: rgba(211,84,0,0.12);
+      --danger: #d32f2f;
+      --success: #2e7d32;
+      --shadow-soft: 0 12px 30px rgba(0,0,0,0.15);
     }
 
     *{box-sizing:border-box;}
     body{
       margin:0;
       font-family:"Cairo",system-ui,Arial;
-      background:
-        radial-gradient(circle at 0% 0%,#1f2937 0,#111827 55%,#020617 100%);
+      background:linear-gradient(135deg,#fff7ec,#ffe0b2);
       color:var(--text-main);
       -webkit-font-smoothing:antialiased;
     }
 
     header{
       padding:.9rem 1rem;
-      background:
-        radial-gradient(circle at top,#1f2937 0,#020617 70%);
-      color:var(--text-main);
+      background:#d35400;
+      color:#fff;
       text-align:center;
       position:sticky;
       top:0;
       z-index:10;
       backdrop-filter:blur(18px);
-      border-bottom:1px solid rgba(148,163,184,0.25);
-      box-shadow:0 18px 40px rgba(0,0,0,0.65);
+      box-shadow:0 8px 20px rgba(0,0,0,0.25);
     }
     header .logo{
       display:flex;
@@ -54,12 +51,10 @@
       width:46px;
       height:46px;
       border-radius:18px;
-      background:
-        #020617
-        url("img/logo-coffee.png") center center/cover no-repeat;
+      background:#fff7ec url("img/logo-coffee.png") center center/cover no-repeat;
       box-shadow:
         0 0 0 1px rgba(248,250,252,0.35),
-        0 12px 30px rgba(0,0,0,0.9);
+        0 8px 18px rgba(0,0,0,0.35);
     }
     header .logo-text-main{
       font-weight:800;
@@ -68,7 +63,7 @@
     }
     header .logo-text-sub{
       font-size:.8rem;
-      color:var(--text-sub);
+      color:#ffe8c7;
     }
 
     main{
@@ -78,7 +73,7 @@
     }
 
     .card{
-      background:radial-gradient(circle at top,#111827,#020617);
+      background:#ffffff;
       border-radius:20px;
       padding:1rem 1.1rem;
       box-shadow:var(--shadow-soft);
@@ -92,9 +87,9 @@
       position:absolute;
       inset:-40%;
       background:
-        radial-gradient(circle at 0% 0%,rgba(245,158,11,0.16),transparent 55%),
-        radial-gradient(circle at 100% 0%,rgba(59,130,246,0.15),transparent 60%);
-      opacity:.95;
+        radial-gradient(circle at 0% 0%,rgba(255,204,128,0.32),transparent 55%),
+        radial-gradient(circle at 100% 0%,rgba(255,245,225,0.4),transparent 60%);
+      opacity:.85;
       pointer-events:none;
       mix-blend-mode:screen;
     }
@@ -115,7 +110,7 @@
       font-family:inherit;
       font-size:.9rem;
       outline:none;
-      background:#020617;
+      background:#fffdf8;
       color:var(--text-main);
       transition:border-color .18s,box-shadow .18s,background .18s,transform .08s;
     }
@@ -126,13 +121,13 @@
     }
     input:focus,select:focus,textarea:focus{
       border-color:var(--accent);
-      box-shadow:0 0 0 1px rgba(245,158,11,0.6);
-      background:#020617;
+      box-shadow:0 0 0 1px rgba(211,84,0,0.4);
+      background:#fffdf8;
     }
 
     button{
-      background:linear-gradient(140deg,#f59e0b,#f97316);
-      color:#020617;
+      background:linear-gradient(140deg,#d35400,#b03a00);
+      color:#fff;
       border:none;
       cursor:pointer;
       font-weight:800;
@@ -161,16 +156,22 @@
     button:disabled{
       opacity:.55;
       cursor:default;
-      background:linear-gradient(140deg,#4b5563,#374151);
+      background:linear-gradient(140deg,#c5c5c5,#b0b0b0);
       color:var(--text-sub);
     }
     button.primary{
-      box-shadow:0 12px 26px rgba(245,158,11,0.5);
+      box-shadow:0 12px 26px rgba(211,84,0,0.35);
     }
     .btn-ghost{
-      background:transparent;
+      background:#fff7ec;
       color:var(--accent);
-      border:1px solid rgba(148,163,184,0.4);
+      border:1px solid #f3d2a2;
+    }
+    .btn-xs{
+      padding:.35rem .6rem;
+      font-size:.75rem;
+      border-radius:999px;
+      width:auto;
     }
 
     .error{color:var(--danger);font-size:.8rem;margin-top:.25rem;}
@@ -186,11 +187,11 @@
       align-items:center;
       gap:.4rem;
       padding:.45rem .85rem;
-      background:rgba(15,23,42,0.9);
+      background:#fff7ec;
       border-radius:14px;
       font-size:.8rem;
       border:1px solid var(--border-subtle);
-      box-shadow:0 8px 20px rgba(0,0,0,0.65);
+      box-shadow:0 6px 14px rgba(0,0,0,0.06);
     }
     .store-chip span.distance{
       color:var(--accent);font-weight:700;
@@ -198,13 +199,13 @@
     .pulse-dot{
       width:9px;height:9px;border-radius:50%;
       background:var(--accent);
-      box-shadow:0 0 0 0 rgba(245,158,11,0.65);
+      box-shadow:0 0 0 0 rgba(211,84,0,0.65);
       animation:pulse 1.7s infinite;
     }
     @keyframes pulse{
-      0%{box-shadow:0 0 0 0 rgba(245,158,11,0.65);}
-      70%{box-shadow:0 0 0 10px rgba(245,158,11,0);}
-      100%{box-shadow:0 0 0 0 rgba(245,158,11,0);}
+      0%{box-shadow:0 0 0 0 rgba(211,84,0,0.65);}
+      70%{box-shadow:0 0 0 10px rgba(211,84,0,0);}
+      100%{box-shadow:0 0 0 0 rgba(211,84,0,0);}
     }
 
     .section-title{
@@ -223,19 +224,19 @@
       gap:.55rem;
     }
     .store-card{
-      background:linear-gradient(135deg,#020617,#111827);
+      background:#fffdf8;
       border-radius:16px;
       padding:.6rem .75rem .65rem;
-      border:1px solid rgba(75,85,99,0.9);
+      border:1px solid #f3d2a2;
       position:relative;
       overflow:hidden;
       transition:border-color .18s,box-shadow .18s,transform .12s,background .18s;
     }
     .store-card.active{
       border-color:var(--accent);
-      box-shadow:0 16px 40px rgba(0,0,0,0.95);
+      box-shadow:0 10px 24px rgba(0,0,0,0.08);
       transform:translateY(-1px);
-      background:radial-gradient(circle at top,#1f2937,#020617);
+      background:#fff;
     }
     .store-name{
       font-weight:700;
@@ -251,14 +252,16 @@
       display:flex;
       gap:.35rem;
     }
-    .btn-xs{
-      padding:.35rem .6rem;
-      font-size:.75rem;
-      border-radius:999px;
-      width:auto;
+
+    /* تبويبات أنواع الخدمة */
+    .service-tabs{
+      margin-top:.5rem;
+      display:flex;
+      gap:.4rem;
+      justify-content:space-between;
     }
 
-    /* المشروبات */
+    /* المشروبات / المنتجات */
     .drink-list{
       display:grid;
       grid-template-columns:repeat(2,minmax(0,1fr));
@@ -266,21 +269,21 @@
       margin-top:.55rem;
     }
     .drink-card{
-      background:linear-gradient(145deg,#020617,#111827);
+      background:#fffdf8;
       border-radius:16px;
       padding:.55rem .55rem .6rem;
       text-align:center;
       cursor:pointer;
-      border:1px solid rgba(55,65,81,0.9);
+      border:1px solid #f3d2a2;
       position:relative;
       overflow:hidden;
       transition:border-color .18s,box-shadow .18s,transform .1s,background .18s;
     }
     .drink-card.active{
       border-color:var(--accent);
-      box-shadow:0 12px 30px rgba(0,0,0,0.95);
+      box-shadow:0 10px 24px rgba(0,0,0,0.08);
       transform:translateY(-1px);
-      background:radial-gradient(circle at top,#1f2937,#020617);
+      background:#ffffff;
     }
     .drink-name{font-weight:700;font-size:.9rem;}
     .drink-price{font-size:.85rem;color:var(--accent);margin-top:.25rem;}
@@ -315,10 +318,10 @@
       padding:.18rem .6rem;
       border-radius:999px;
       font-size:.72rem;
-      background:rgba(15,23,42,0.9);
+      background:#fff7ec;
       color:var(--accent);
       font-weight:600;
-      border:1px solid rgba(55,65,81,0.9);
+      border:1px solid #f3d2a2;
     }
     .cart-items{
       margin-top:.4rem;
@@ -331,14 +334,14 @@
     /* التايملاين */
     .status-dot{
       width:11px;height:11px;border-radius:50%;
-      background:#4b5563;
+      background:#c0c0c0;
       display:inline-block;margin-left:.3rem;
-      box-shadow:0 0 0 0 rgba(74,222,128,0);
+      box-shadow:0 0 0 0 rgba(46,125,50,0);
       transition:background .18s,box-shadow .25s;
     }
     .status-dot.active{
       background:var(--success);
-      box-shadow:0 0 0 4px rgba(74,222,128,0.25);
+      box-shadow:0 0 0 4px rgba(46,125,50,0.25);
     }
     .timeline{
       display:flex;
@@ -356,11 +359,11 @@
       margin-top:.15rem;
     }
 
-    /* مودال اختيار السكر للمشروب */
+    /* مودال اختيار السكر / الكمية */
     .modal-backdrop{
       position:fixed;
       inset:0;
-      background:rgba(15,23,42,0.85);
+      background:rgba(0,0,0,0.45);
       display:none;
       align-items:flex-end;
       justify-content:center;
@@ -369,11 +372,11 @@
     .modal{
       width:100%;
       max-width:500px;
-      background:#020617;
+      background:#fff;
       border-radius:20px 20px 0 0;
       padding:1rem 1rem 1.1rem;
-      border-top:1px solid #374151;
-      box-shadow:0 -10px 30px rgba(0,0,0,0.7);
+      border-top:1px solid #f3d2a2;
+      box-shadow:0 -10px 30px rgba(0,0,0,0.25);
     }
     .modal-header{
       display:flex;
@@ -442,7 +445,18 @@
   <section id="orderCard" class="card" style="display:none;">
     <div class="section-title">طلب جديد</div>
     <h3>اختار المحل على طريقك</h3>
-    <div id="locationMsg" class="small">
+
+    <!-- تبويبات أنواع الخدمة -->
+    <div class="service-tabs">
+      <button type="button" class="btn-xs btn-ghost" id="tabDrinks">مشروبات</button>
+      <button type="button" class="btn-xs btn-ghost" id="tabBakery">مخبوزات</button>
+      <button type="button" class="btn-xs btn-ghost" id="tabMarket">ماركت</button>
+    </div>
+    <p class="small" id="serviceHint" style="margin-top:.25rem;">
+      اختر النوع عشان نعرض لك المحلات المناسبة.
+    </p>
+
+    <div id="locationMsg" class="small" style="margin-top:.25rem;">
       <span class="pulse-dot"></span>
       جاري تحديد موقعك لعرض المحلات القريبة...
     </div>
@@ -458,14 +472,14 @@
       </div>
     </div>
 
-    <!-- قائمة المحلات المنظمة -->
+    <!-- قائمة المحلات -->
     <h4 style="margin-top:.8rem;">محلات قريبة</h4>
     <div id="storesStrip" class="stores-list-vertical"></div>
 
-    <!-- قائمة المشروبات -->
-    <h4 style="margin-top:.8rem;">مشروبات المحل</h4>
+    <!-- قائمة المنتجات -->
+    <h4 id="productsTitle" style="margin-top:.8rem;">منتجات المحل</h4>
     <div id="drinksContainer">
-      <div class="small">اختر محل أولاً ليتم تحميل المشروبات.</div>
+      <div class="small">اختر محل أولاً ليتم تحميل المنتجات.</div>
     </div>
 
     <!-- ملاحظات عامة للطلب -->
@@ -483,7 +497,7 @@
         <span id="summaryStore">لا يوجد</span>
       </div>
       <div class="summary-row">
-        <span class="small">عدد المشروبات:</span>
+        <span class="small">عدد المنتجات:</span>
         <span id="summaryItemsCount">0</span>
       </div>
       <div class="summary-row">
@@ -527,21 +541,34 @@
 
 </main>
 
-<!-- مودال اختيار السكر للمشروب -->
+<!-- مودال اختيار السكر / الكمية -->
 <div id="drinkModalBackdrop" class="modal-backdrop">
   <div class="modal">
     <div class="modal-header">
-      <h4 id="modalDrinkName">اسم المشروب</h4>
+      <h4 id="modalDrinkName">اسم المنتج</h4>
       <button class="modal-close" id="modalCloseBtn">✕</button>
     </div>
-    <label>درجة السكر</label>
-    <select id="modalSugarSelect">
-      <option value="normal">مظبوط</option>
-      <option value="no">سادة</option>
-      <option value="extra">زيادة</option>
-    </select>
-    <label style="margin-top:.6rem;">ملاحظة لهذا المشروب (اختياري)</label>
-    <textarea id="modalItemNote" placeholder="مثال: بدون فوم، حليب لوز، كوب كبير."></textarea>
+
+    <!-- قسم السكر (مشروبات) -->
+    <div id="sugarSection">
+      <label>درجة السكر</label>
+      <select id="modalSugarSelect">
+        <option value="normal">مظبوط</option>
+        <option value="no">سادة</option>
+        <option value="extra">زيادة</option>
+      </select>
+      <label style="margin-top:.6rem;">ملاحظة لهذا المشروب (اختياري)</label>
+      <textarea id="modalItemNote" placeholder="مثال: بدون فوم، حليب لوز، كوب كبير."></textarea>
+    </div>
+
+    <!-- قسم الكمية (مخبوزات / ماركت) -->
+    <div id="quantitySection" style="display:none;">
+      <label>الكمية</label>
+      <input type="number" id="modalQuantityInput" min="1" step="1" value="1" />
+      <label style="margin-top:.6rem;">ملاحظة للمنتج (اختياري)</label>
+      <textarea id="modalItemNote2" placeholder="مثال: بدون بصل، عبوة كبيرة، نوع معين."></textarea>
+    </div>
+
     <button id="modalAddBtn" class="primary" style="margin-top:.7rem;">
       إضافة للسلة
     </button>
@@ -549,7 +576,7 @@
 </div>
 
 <script>
-  // 1) إعداد Firebase بنفس مشروعك
+  // 1) إعداد Firebase
   const firebaseConfig = {
     apiKey: "AIzaSyDatQR-gj_0D49LjQzcFQyn9zAmLd86NJs",
     authDomain: "hotspot-5525c.firebaseapp.com",
@@ -580,11 +607,17 @@
   const btnSaveProfile = document.getElementById('btnSaveProfile');
   const profileMsg = document.getElementById('profileMsg');
 
+  const tabDrinks = document.getElementById('tabDrinks');
+  const tabBakery = document.getElementById('tabBakery');
+  const tabMarket = document.getElementById('tabMarket');
+  const serviceHint = document.getElementById('serviceHint');
+
   const locationMsg = document.getElementById('locationMsg');
   const nearestStoreName = document.getElementById('nearestStoreName');
   const nearestStoreDistance = document.getElementById('nearestStoreDistance');
   const storesStrip = document.getElementById('storesStrip');
   const drinksContainer = document.getElementById('drinksContainer');
+  const productsTitle = document.getElementById('productsTitle');
 
   const orderNote = document.getElementById('orderNote');
 
@@ -607,6 +640,10 @@
   const modalDrinkName = document.getElementById('modalDrinkName');
   const modalSugarSelect = document.getElementById('modalSugarSelect');
   const modalItemNote = document.getElementById('modalItemNote');
+  const modalQuantityInput = document.getElementById('modalQuantityInput');
+  const modalItemNote2 = document.getElementById('modalItemNote2');
+  const sugarSection = document.getElementById('sugarSection');
+  const quantitySection = document.getElementById('quantitySection');
   const modalAddBtn = document.getElementById('modalAddBtn');
   const modalCloseBtn = document.getElementById('modalCloseBtn');
 
@@ -617,11 +654,34 @@
   let selectedStore = null;
   let lastOrder = null;
 
-  // سلة المشروبات
-  let cartItems = []; // [{id,name,basePrice,quantity,sugarLevel,itemNote}]
+  // نوع الخدمة الحالي
+  let currentServiceType = 'drinks'; // drinks / bakery / market
+
+  // سلة المنتجات
+  let cartItems = []; // [{id,name,basePrice,quantity,sugarLevel,itemNote,serviceType}]
   let modalCurrentDrink = null;
 
-  // 3) تسجيل الدخول / إنشاء حساب
+  // 3) اختيار نوع الخدمة
+  function setServiceType(type){
+    currentServiceType = type;
+    tabDrinks.classList.toggle('primary', type === 'drinks');
+    tabBakery.classList.toggle('primary', type === 'bakery');
+    tabMarket.classList.toggle('primary', type === 'market');
+
+    serviceHint.textContent =
+      type === 'drinks' ? 'محلات القهوة والمشروبات تظهر هنا.'
+      : type === 'bakery' ? 'محلات المخبوزات فقط.'
+      : 'محلات الماركت / البقالة فقط.';
+
+    // إعادة تحميل المحلات المتوافقة مع النوع
+    loadStores();
+  }
+
+  tabDrinks.onclick = ()=>setServiceType('drinks');
+  tabBakery.onclick = ()=>setServiceType('bakery');
+  tabMarket.onclick = ()=>setServiceType('market');
+
+  // 4) تسجيل الدخول / إنشاء حساب
   btnAuth.onclick = async () => {
     authMsg.textContent = '';
     const email = emailInput.value.trim();
@@ -672,18 +732,21 @@
     profileCard.style.display = 'block';
     orderCard.style.display = 'block';
     statusCard.style.display = 'block';
+
+    // ضبط النوع الافتراضي ثم تحميل المحلات
+    setServiceType(currentServiceType);
     getLocationAndLoadStores();
     listenLastOrder();
   }
 
-  // 4) حفظ بيانات العميل
+  // 5) حفظ بيانات العميل
   btnSaveProfile.onclick = async () => {
     profileMsg.textContent = '';
     const name = custName.value.trim();
     const phone = custPhone.value.trim();
     const car = custCar.value.trim();
     if(!name || !phone){
-      profileMsg.style.color = '#f97373';
+      profileMsg.style.color = '#d32f2f';
       profileMsg.textContent = 'الاسم ورقم الجوال مطلوبان.';
       return;
     }
@@ -691,18 +754,18 @@
       await db.collection('users').doc(currentUser.uid).update({
         name, phone, carNumber:car
       });
-      profileMsg.style.color = '#4ade80';
+      profileMsg.style.color = '#2e7d32';
       profileMsg.textContent = 'تم حفظ البيانات.';
     }catch(e){
-      profileMsg.style.color = '#f97373';
+      profileMsg.style.color = '#d32f2f';
       profileMsg.textContent = 'خطأ في حفظ البيانات.';
     }
   };
 
-  // 5) جلب الموقع + تحميل المحلات
+  // 6) جلب الموقع + تحميل المحلات
   function getLocationAndLoadStores(){
     if(!navigator.geolocation){
-      locationMsg.textContent = 'المتصفح لا يدعم تحديد الموقع، سيتم عرض كل المحلات.';
+      locationMsg.textContent = 'المتصفح لا يدعم تحديد الموقع، سيتم عرض المحلات لهذا النوع بدون ترتيب.';
       loadStores();
       return;
     }
@@ -714,23 +777,35 @@
       locationMsg.textContent = 'تم تحديد موقعك، جاري جلب أقرب المحلات...';
       loadStores();
     },err=>{
-      locationMsg.textContent = 'تعذر الحصول على موقعك، سيتم عرض كل المحلات.';
+      locationMsg.textContent = 'تعذر الحصول على موقعك، سيتم عرض المحلات بدون ترتيب.';
       loadStores();
     });
   }
 
   async function loadStores(){
-    const snap = await db.collection('stores').where('isActive','==',true).get();
+    let query = db.collection('stores').where('isActive','==',true);
+    // فلترة حسب نوع الخدمة
+    query = query.where('storeType','==',currentServiceType);
+
+    const snap = await query.get();
     stores = [];
     snap.forEach(d=>{
       const s = d.data();
       s.id = d.id;
       stores.push(s);
     });
+
     if(stores.length === 0){
-      locationMsg.textContent = 'لا توجد محلات متاحة حالياً.';
+      locationMsg.textContent = 'لا توجد محلات متاحة لهذا النوع حالياً.';
+      storesStrip.innerHTML = '';
+      drinksContainer.innerHTML = '<div class="small">لا توجد منتجات لهذا النوع حالياً.</div>';
+      nearestStoreName.textContent = 'غير محدد';
+      nearestStoreDistance.textContent = '';
+      summaryStore.textContent = 'لا يوجد';
+      btnPlaceOrder.disabled = true;
       return;
     }
+
     if(customerLocation){
       for(const s of stores){
         if(s.location && s.location.latitude){
@@ -744,6 +819,7 @@
       }
       stores.sort((a,b)=>a.distanceKm - b.distanceKm);
     }
+
     renderStoresList();
     selectStore(stores[0]);
   }
@@ -768,14 +844,18 @@
       const distanceText = (s.distanceKm && s.distanceKm < 9000)
         ? `${s.distanceKm.toFixed(1)} كم تقريباً`
         : '';
+      const typeLabel =
+        s.storeType === 'drinks' ? 'مشروبات' :
+        s.storeType === 'bakery' ? 'مخبوزات' : 'ماركت';
       card.innerHTML = `
         <div class="store-name">${s.name || 'محل بدون اسم'}</div>
         <div class="store-meta">
-          ${(s.address || '')}
+          ${typeLabel}
+          ${s.address ? ' • ' + s.address : ''}
           ${distanceText ? '<br>' + distanceText : ''}
         </div>
         <div class="store-actions">
-          <button class="btn-xs primarySelect">اختيار هذا المحل</button>
+          <button class="btn-xs primary primarySelect">اختيار هذا المحل</button>
           <button class="btn-xs btn-ghost mapBtn">شوف على الخريطة</button>
         </div>
       `;
@@ -794,7 +874,7 @@
 
   function selectStore(store){
     selectedStore = store;
-    cartItems = []; // تنظيف السلة عند تغيير المحل
+    cartItems = [];
     updateCartUI();
 
     [...storesStrip.children].forEach(c=>{
@@ -809,6 +889,13 @@
       nearestStoreDistance.textContent = '';
     }
     summaryStore.textContent = store.name;
+
+    const type = store.storeType || currentServiceType;
+    productsTitle.textContent =
+      type === 'drinks' ? 'مشروبات المحل'
+      : type === 'bakery' ? 'مخبوزات المحل'
+      : 'منتجات الماركت';
+
     btnPlaceOrder.disabled = true;
     loadDrinksForStore(store.id);
   }
@@ -824,12 +911,12 @@
     window.open(url,'_blank');
   }
 
-  // 6) تحميل المشروبات
+  // 7) تحميل المنتجات
   async function loadDrinksForStore(storeId){
-    drinksContainer.innerHTML = '<div class="small">جارٍ تحميل المشروبات...</div>';
+    drinksContainer.innerHTML = '<div class="small">جارٍ تحميل المنتجات...</div>';
     const snap = await db.collection('drinks').where('storeId','==',storeId).get();
     if(snap.empty){
-      drinksContainer.innerHTML = '<div class="small">لا توجد مشروبات لهذا المحل حالياً.</div>';
+      drinksContainer.innerHTML = '<div class="small">لا توجد منتجات لهذا المحل حالياً.</div>';
       return;
     }
     const list = document.createElement('div');
@@ -837,7 +924,7 @@
     snap.forEach(d=>{
       const drink = d.data();
       const base = drink.basePrice || drink.price || 0;
-      const finalPrice = base + 5;
+      const finalPrice = base + 5; // نفس حساب الخدمة الحالي
       const card = document.createElement('div');
       card.className = 'drink-card';
       card.onclick = ()=>{
@@ -854,17 +941,28 @@
     drinksContainer.appendChild(list);
   }
 
-  // مودال: اختيار السكر + ملاحظة للمشروب
+  // 8) المودال: سكر/كمية حسب النوع
   function openDrinkModal(drink){
     if(!selectedStore){
-      orderMsg.style.color='#f97373';
+      orderMsg.style.color='#d32f2f';
       orderMsg.textContent='اختر محل أولاً.';
       return;
     }
     modalCurrentDrink = drink;
     modalDrinkName.textContent = drink.name;
-    modalSugarSelect.value = 'normal';
-    modalItemNote.value = '';
+
+    if(currentServiceType === 'drinks'){
+      sugarSection.style.display = 'block';
+      quantitySection.style.display = 'none';
+      modalSugarSelect.value = 'normal';
+      modalItemNote.value = '';
+    }else{
+      sugarSection.style.display = 'none';
+      quantitySection.style.display = 'block';
+      modalQuantityInput.value = '1';
+      modalItemNote2.value = '';
+    }
+
     drinkModalBackdrop.style.display = 'flex';
   }
   function closeDrinkModal(){
@@ -877,15 +975,42 @@
   };
   modalAddBtn.onclick = ()=>{
     if(!modalCurrentDrink) return;
-    const sugarLevel = modalSugarSelect.value || 'normal';
-    const itemNote = modalItemNote.value.trim() || null;
-    addDrinkToCart(modalCurrentDrink,sugarLevel,itemNote);
+
+    let sugarLevel = null;
+    let itemNote = null;
+    let quantity = 1;
+
+    if(currentServiceType === 'drinks'){
+      sugarLevel = modalSugarSelect.value || 'normal';
+      itemNote = modalItemNote.value.trim() || null;
+    }else{
+      quantity = parseInt(modalQuantityInput.value || '1',10);
+      if(quantity < 1) quantity = 1;
+      itemNote = modalItemNote2.value.trim() || null;
+    }
+
+    const drinkObj = {
+      id: modalCurrentDrink.id,
+      name: modalCurrentDrink.name,
+      basePrice: modalCurrentDrink.basePrice
+    };
+
+    for(let i=0;i<quantity;i++){
+      addDrinkToCart(drinkObj,sugarLevel,itemNote);
+    }
     closeDrinkModal();
   };
 
   function addDrinkToCart(drink,sugarLevel,itemNote){
     orderMsg.textContent = '';
-    const existing = cartItems.find(i=>i.id === drink.id && i.sugarLevel === sugarLevel && i.itemNote === itemNote);
+    const serviceType = currentServiceType;
+
+    const existing = cartItems.find(i=>
+      i.id === drink.id &&
+      i.sugarLevel === sugarLevel &&
+      i.itemNote === itemNote &&
+      i.serviceType === serviceType
+    );
     if(existing){
       existing.quantity += 1;
     }else{
@@ -895,7 +1020,8 @@
         basePrice: drink.basePrice,
         quantity: 1,
         sugarLevel,
-        itemNote
+        itemNote,
+        serviceType
       });
     }
     updateCartUI();
@@ -904,6 +1030,7 @@
   function updateCartUI(){
     const totalItems = cartItems.reduce((s,i)=>s + i.quantity,0);
     summaryItemsCount.textContent = totalItems;
+
     const baseTotal = cartItems.reduce((s,i)=>s + i.basePrice * i.quantity,0);
     const serviceTotal = cartItems.reduce((s,i)=>s + 5 * i.quantity,0);
     const totalCustomerPrice = baseTotal + serviceTotal;
@@ -911,33 +1038,40 @@
 
     cartItemsPreview.innerHTML = '';
     if(cartItems.length === 0){
-      cartItemsPreview.textContent = 'لم تضف أي مشروب بعد.';
+      cartItemsPreview.textContent = 'لم تضف أي منتج بعد.';
       btnPlaceOrder.disabled = true;
       return;
     }
     cartItems.forEach(i=>{
+      let extra = '';
+      if(i.serviceType === 'drinks'){
+        const sugarLabel = i.sugarLevel === 'no' ? 'سادة'
+          : i.sugarLevel === 'extra' ? 'زيادة'
+          : 'مظبوط';
+        extra = ` • ${sugarLabel}`;
+      }
+      if(i.itemNote){
+        extra += ` • ${i.itemNote}`;
+      }
       const line = document.createElement('div');
-      const sugarLabel = i.sugarLevel === 'no' ? 'سادة' :
-        i.sugarLevel === 'extra' ? 'زيادة' : 'مظبوط';
-      const notePart = i.itemNote ? ` • ${i.itemNote}` : '';
-      line.textContent = `${i.name} × ${i.quantity} • ${sugarLabel}${notePart}`;
+      line.textContent = `${i.name} × ${i.quantity}${extra}`;
       cartItemsPreview.appendChild(line);
     });
     btnPlaceOrder.disabled = false;
   }
 
-  // 7) إنشاء طلب
+  // 9) إنشاء طلب
   btnPlaceOrder.onclick = async ()=>{
     orderMsg.textContent = '';
     if(!selectedStore || cartItems.length === 0){
-      orderMsg.style.color='#f97373';
-      orderMsg.textContent='اختر محل وأضف مشروب واحد على الأقل.';
+      orderMsg.style.color='#d32f2f';
+      orderMsg.textContent='اختر محل وأضف منتج واحد على الأقل.';
       return;
     }
     const car = custCar.value.trim();
     const name = custName.value.trim();
     if(!name){
-      orderMsg.style.color='#f97373';
+      orderMsg.style.color='#d32f2f';
       orderMsg.textContent='اكتب اسمك واحفظ البيانات أولاً.';
       return;
     }
@@ -956,8 +1090,9 @@
         drinkName: item.name,
         basePrice: base,
         quantity: item.quantity,
-        sugarLevel: item.sugarLevel,
+        sugarLevel: item.sugarLevel || null,
         itemNote: item.itemNote || null,
+        serviceType: item.serviceType || currentServiceType,
         serviceFee,
         driverFee,
         totalItemPrice
@@ -990,18 +1125,18 @@
     };
     try{
       await db.collection('orders').add(orderData);
-      orderMsg.style.color='#4ade80';
+      orderMsg.style.color='#2e7d32';
       orderMsg.textContent='تم إرسال طلبك بنجاح، تابع الحالة بالأسفل.';
       btnPlaceOrder.disabled = true;
       cartItems = [];
       updateCartUI();
     }catch(e){
-      orderMsg.style.color='#f97373';
+      orderMsg.style.color='#d32f2f';
       orderMsg.textContent='حدث خطأ في إرسال الطلب.';
     }
   };
 
-  // 8) متابعة آخر طلب للعميل
+  // 10) متابعة آخر طلب
   function listenLastOrder(){
     if(!currentUser) return;
     db.collection('orders')
@@ -1024,7 +1159,7 @@
     statusCard.style.display='block';
     const drinkName = lastOrder.drinkName || (lastOrder.items && lastOrder.items[0]?.drinkName) || '';
     const price = lastOrder.totalCustomerPrice || lastOrder.items?.[0]?.totalItemPrice || '';
-    lastOrderInfo.textContent = `${drinkName || 'طلب قهوة'} • ${price} ج • الحالة: ${lastOrder.status}`;
+    lastOrderInfo.textContent = `${drinkName || 'طلب'} • ${price} ج • الحالة: ${lastOrder.status}`;
     const st = lastOrder.status;
     dotPending.classList.toggle('active', ['pending','accepted','preparing','ready','on_the_way','delivered'].includes(st));
     dotPreparing.classList.toggle('active', ['preparing','ready','on_the_way','delivered'].includes(st));
@@ -1046,4 +1181,4 @@
   }
 </script>
 </body>
-    </html>
+</html>
